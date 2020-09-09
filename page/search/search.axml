@@ -1,0 +1,113 @@
+<view class="page">
+  <view class="header">
+    <image src="../../img/search.png" class="searchImg"/>
+    <image src="../../img/clear.png" a:if="{{keyword}}" catchTap="" class="clear"/>
+    <input placeholder="输入关键词或样本编号" value="{{keyword}}" onInput="hasKeyword" placeholder-class="place" class="input1" />
+    <view class="searchContent">
+      <view class="search">
+        搜索
+      </view>
+      <view class="shus">
+      </view>
+      <view class="shaixuan" catchTap="showDialog">
+        筛选
+      </view>
+    </view>
+  </view>
+  <view class="noPage">
+    <image mode="scaleToFill" src="../../img/zanwu.png" class="zanwuImg"/>
+    <view class="zanwuTxt">
+      ~~没有找到相关数据~~
+    </view>
+  </view>
+  <!-- 底部 -->
+  <view class="takeFooter">
+    <view class="checkBox" catchTap="allSelect">
+      <view class="checkbox {{select1==true?'checkboxed':''}}">
+      </view>
+      <view class="ml12">
+        全选
+      </view>
+    </view>
+    <view class="takeFooterRight">
+      <view class="takeTxt1">
+        合计:
+        <text class="takeNumber">22</text>条
+      </view>
+      <!--<view class="takeBtn">
+      提交</view> -->
+      <view class="takeBtn takeBtn1" catchTap="submit">
+      提交
+      </view>
+    </view>
+  </view>
+  <!-- 筛选 -->
+  <view class="mask" a:if="{{showDialog}}" catchTap="hideDialog"></view>
+  <view class="shai" a:if="{{showDialog}}">
+    <view class="shaiTitle">
+      <view>
+        材料类型
+      </view>
+      <view class="bbt" catchTap="toggle">
+        <image mode="scaleToFill" src="{{toggle1==true?'../../img/top.png':'../../img/up.png'}}" class="off"/>
+      </view>
+    </view>
+    <view class="shaiList {{toggle1==false?'h150':''}}">
+      <view a:for="{{list}}" key="{{item.id}}" class="navItem {{item.select==true?'active':''}}" data-id="{{item.id}}" catchTap="setShow">
+          {{item.name}}
+      </view>
+    </view>
+    <!-- 材料状态 -->
+    <view class="shaiTitle">
+      <view>
+        材料状态
+      </view>
+    </view>
+    <view class="shaiList">
+      <view class="navItem {{showStatus==item.id?'active':''}}" a:for="{{statusList}}" key="{{item.id}}" data-id="{{item.id}}" catchTap="setStatus">
+         {{item.name}}
+      </view>
+    </view>
+    <!-- 时间间隔 -->
+    <view class="shaiTitle">
+      <view>
+        时间区间
+      </view>
+    </view>
+    <view class="shaiList">
+      <view class="navItem {{showDay==item.id?'active':''}}" a:for="{{dayList}}" key="{{item.id}}" data-id="{{item.id}}" catchTap="setDay">
+         {{item.name}}
+      </view>
+    </view>
+    <!-- 时间catchTap -->
+    <view class="shijian">
+      <view class="timer">
+        <picker mode="date" value="{{val}}" range="{{rangeArr}}" onChange="change1">
+          <view>
+            <image mode="scaleToFill" src="../../img/rili.png" class="rili"/>{{date1}}</view>
+        </picker>
+      </view>
+      <view>
+       至
+      </view>
+      <view class="timer">
+        <picker mode="date" value="{{val}}" range="{{rangeArr}}" onChange="change2">
+          <view>
+            <image mode="scaleToFill" src="../../img/rili.png" class="rili"/>{{date2}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="lastChild">
+    </view>
+    <view class="lastChild">
+    </view>
+    <view class="shaiFooter">
+      <view class="shaiBtn">
+        重置
+      </view>
+      <view class="shaiBtn">
+        确定
+      </view>
+    </view>
+  </view>
+</view>

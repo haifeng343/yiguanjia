@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "page/index/index",
+    "page/my/my",
+    "page/loanList/loanList",
+    "page/search/search",
+    "page/agent/agent",
+    "page/takeOut/takeOut",
+    "page/application/application",
+    "page/position/position"
+  ],
+  "window": {
+    "enableWK": "YES",
+    "enableDSL": true,
+    "backgroundColor": "#F5F5F9",
+    "pullRefresh": false,
+    "allowsBounceVertical": true
+  },
+  "tabBar": {
+    "textColor": "#404040",
+    "selectedColor": "#108ee9",
+    "backgroundColor": "#F5F5F9",
+    "items": []
+  },
+  "debug": true
+}

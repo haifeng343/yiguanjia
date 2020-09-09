@@ -1,0 +1,170 @@
+<block>
+  <view class="page">
+    <view class="takeTop">
+      <picker value="{{val}}" range="{{rangeArr}}" onChange="change1">
+        <view class="takeItem">
+          <view class="label1">归还类型</view>
+          <view class="start">
+            <view a:if="{{!val}}" class="place">请选择</view>
+            <view a:else>{{rangeArr[val]}}</view>
+            <image src="../../img/right.png" class="right"></image>
+          </view>
+        </view>
+      </picker>
+      <picker mode="date" value="{{val}}" range="{{rangeArr}}" onChange="change2">
+        <view class="takeItem">
+          <view class="label1">预计归还时间</view>
+          <view class="start">
+            <view a:if="{{!date}}" class="place">请选择</view>
+            <view a:else>{{date}}</view>
+            <image src="../../img/right.png" class="right"></image>
+          </view>
+        </view>
+      </picker>
+      <picker value="{{val3}}" range="{{rangeArr3}}" onChange="change3">
+        <view class="takeItem">
+          <view class="label1">转移类型</view>
+          <view class="start">
+            <view a:if="{{!val3}}" class="place">请选择</view>
+            <view a:else>{{rangeArr3[val3]}}</view>
+            <image src="../../img/right.png" class="right"></image>
+          </view>
+        </view>
+      </picker>
+      <view class="takeItem b1">
+        <view class="label1">申请原因</view>
+        <input placeholder="请输入原因" value="{{dec}}" onInput="hasInput" class="input1" placeholder-class="place" maxlength="-1"></input>
+      </view>
+    </view>
+    <view class="list">
+      <view class="listTitle">冻存盒信息</view>
+      <view class="itemJie itemJie1" style="margin-bottom:0">
+        <image src="../../img/delete.png" class="delete"/>
+        <view class="itemJieTop borderNone">
+          <view class="start">
+            <image src="../../img/order.png" class="order order1"></image>
+            <view class="itemJieCode">YB202008260004</view></view>
+          <view class="codeNumber"></view></view>
+        <view class="itemJieTo borderNone">
+          <view class="start">
+            <view class="itemJieCode"> 转移前冻存盒位置：
+            </view>
+            <text class="goto">3L冰箱A11大层3小层2</text>
+          </view>
+          <view class="codeNumber"></view></view>
+        <view class="itemJieFoter itemJieFoter1 borderNone">
+          <view class="itemJieBtn itemJieBtn1">
+            选择位置
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="itemJieToggle">
+    <view>
+    材料信息
+    </view>
+    <view>
+    收起
+      <image src="../../img/up.png" class="off"/>
+    </view>
+  </view>
+  <view class="itemJie">
+    <image src="../../img/delete.png" class="delete"/>
+    <view class="itemJieTop">
+      <view class="start">
+        <image src="../../img/order.png" class="order"></image>
+        <view class="itemJieCode">YB202008260004</view></view>
+    </view>
+    <view class="itemJieContent">
+      <view class="itemJieContentTop">
+        <view class="itemJieImg">
+          <image src="../../img/product.png" class="img1"></image></view>
+        <view class="itemJieTxt">
+          <view class="itemJietxt1">VSTM1 monoclonal antibody edVSTM1 monoclonal antibody edVSTM1 monoclonal antibody ed</view>
+          <view>货号: H00284415-M03</view>
+          <view>品牌: 圣克鲁斯生物技术</view></view></view>
+      <view class="itemJieTent">
+        <view class="itemJieTentItem">
+          <view class="itemJieTentItemLabel">材料类型:</view>
+          <view class="itemJieTentItemTxt">细胞</view></view>
+        <view class="itemJieTentItem">
+          <view class="itemJieTentItemLabel">组织类型:</view>
+          <view class="itemJieTentItemTxt">细胞</view></view>
+        <view class="itemJieTentItem">
+          <view class="itemJieTentItemLabel">肿瘤类型:</view>
+          <view class="itemJieTentItemTxt">细胞</view></view>
+        <view class="itemJieTentItem">
+          <view class="itemJieTentItemLabel">溶冻次数:</view>
+          <view class="itemJieTentItemTxt red">15次</view></view>
+        <view class="itemJieTentItem itemJieTentItem1">
+          <view class="itemJieTentItemLabel">转移前冻存盒位置:</view>
+          <view class="itemJieTentItemTxt goto">3L冰箱A11大层3小层2</view>
+        </view>
+        <view class="itemJieTentItem">
+          <view class="itemJieTentItemLabel">转移前材料位置:</view>
+          <view class="itemJieTentItemTxt goto">A1</view></view>
+        <view class="itemJieTentItem" a:if="{{type !== 5}}">
+          <view class="itemJieTentItemLabel">归还类型:</view>
+          <view class="itemJieTentItemTxt">归还</view></view>
+        <view class="itemJieTentItem">
+          <view class="itemJieTentItemLabel">规格:</view>
+          <view class="itemJieTentItemTxt">20ml</view></view>
+        <view class="itemJieTentItem">
+          <view class="itemJieTentItemLabel">容量:</view>
+          <view class="itemJieTentItemTxt">20ml</view></view>
+        <view class="itemJieTentItem" a:if="{{type !== 6}}">
+          <view class="itemJieTentItemLabel">出库时间:</view>
+          <view class="itemJieTentItemTxt">2010-10-12</view></view>
+        <view class="itemJieTentItem" a:if="{{type !== 6}}">
+          <view class="itemJieTentItemLabel">预计归还时间:</view>
+          <view class="itemJieTentItemTxt">2010-10-12</view></view></view>
+      <view class="itemJieFoter" a:if="{{type==4}}">
+        <view class="">
+            使用量
+        </view>
+        <view class="itemJieFoterRight">
+          <input type="digit" class="input2s" cursor-spacing="60"/>ml</view></view></view></view></view></view>
+  <view class="lastChild"></view>
+  <image src="../../img/add.png" class="add"/>
+  <!-- 弹出窗 -->
+  <view class="mask" a:if="{{showDialog}}">
+  </view>
+  <view class="Toust" a:if="{{showDialog}}">
+    <view class="ToustContent">
+      <view class="ToustTitle">
+      提示
+      </view>
+      <view class="ToustTxt">
+      是否确认此操作？
+      </view>
+    </view>
+    <view class="ToustFooter">
+      <view class="ToustBtn">
+        取消
+      </view>
+      <view class="ToustBtn">
+        确定
+      </view>
+    </view>
+  </view>
+  <!-- 底部 -->
+  <view class="takeFooter">
+    <view class="takeTxt1">
+        合计材料:
+      <text class="takeNumber">22</text>条
+    </view>
+    <!--<view class="takeBtn">
+      提交</view> -->
+    <view class="takeBtn takeBtn1" onTap="submit">
+      提交
+    </view>
+  </view>
+</block>
+<!-- 没有数据 -->
+<block a:if="{{list}}">
+  <view class="list">
+    <view class="listTitle">材料列表</view></view>
+  <view class="noPage">
+    <image src="../../img/zanwu.png" class="zanwuImg"/>
+    <view class="zanwuBtn">去选择材料</view></view></block>

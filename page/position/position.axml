@@ -1,0 +1,114 @@
+<view class="page">
+  <view class="container">
+    <view class="itemContent">
+      <view class="itemHeader">
+        <view>
+          <image mode="scaleToFill" src="../../img/dt1.png" class="dt"></image>
+          样本信息
+        </view>
+        <view class="m2">DYA3425</view>
+      </view>
+      <view class="itemBot">
+        <view class="itemTitle nowrap">重组Anti-alpha smooth muscle Actismooth mus...</view>
+        <view class="itemVenter">
+          <view class="m1">材料类型：细胞</view>
+          <view class="m1">组织类型：正常组织</view>
+        </view>
+      </view>
+    </view>
+    <view class="btn">选择位置</view>
+    <view class="navList">
+      <view class="navItem">
+        <view class="bo"></view>
+        可选
+      </view>
+      <view class="navItem">
+        <view class="bo"></view>
+        选中
+      </view>
+      <view class="navItem">
+        <view class="bo"></view>
+        仓位保留
+      </view>
+      <view class="navItem">
+        <view class="bo"></view>
+        已占用
+      </view>
+    </view>
+    <view class="itemContent">
+      <view class="itemHeader">
+        <view>
+          <image mode="scaleToFill" src="../../img/dt2.png" class="dt1"></image>
+          存放位置
+        </view>
+        <!-- <view class="m3">房间：301</view> -->
+      </view>
+      <view class="itemBot2">
+        <view class="between">
+          <view>
+          房间号  
+          </view>
+          <view>
+            301
+            <image src="../../img/right.png" class="right"/>
+          </view>
+        </view>
+        <view class="between">
+          <view>
+          容器  
+          </view>
+          <view>
+            冰箱YBR123
+            <image src="../../img/right.png" class="right"/>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="itemContent">
+      <view class="itemHeader borderNone">
+        <view>
+          <image mode="scaleToFill" src="../../img/dt5.png" class="dt3"></image>
+          层级
+        </view>
+      </view>
+      <view class="itemBot1">
+        <view class="item1" a:for="{{navList}}" key="{{index}}">
+          <image mode="scaleToFill" src="../../img/d.png"/ class="d">
+        </view>
+      </view>
+    </view>
+    <view class="itemContent">
+      <view class="itemHeader borderNone">
+        <view>
+          <image mode="scaleToFill" src="../../img/dt5.png" class="dt3"></image>
+          架子
+        </view>
+      </view>
+      <view class="itemBot1">
+        <view class="item1" a:for="{{navList}}" key="{{index}}">
+          <image mode="scaleToFill" src="../../img/d.png"/ class="d">
+        </view>
+      </view>
+    </view>
+    <view class="itemContent">
+       <view class="itemHeader borderNone">
+        <view>
+          <image mode="scaleToFill" src="../../img/dt4.png" class="dt4"></image>
+          冻存盒
+        </view>
+      </view>
+      <view class="parent">
+        <movable-area class="body">
+          <movable-view damping="{{20}}" direction="all" class="list" scale="{{true}}" scale-min="{{1}}" scale-max="{{1.4}}">
+            <view class="item" a:for="{{cells}}" key="index" data-item="{{item}}" onTap="showItem">
+              <image mode="scaleToFill" src="../../img/dd.png" class="dd"/>
+              <view class="itemName">
+                {{item.number}}
+              </view>
+            </view>
+          </movable-view>
+        </movable-area>
+      </view>
+    </view>
+  </view>
+</view>

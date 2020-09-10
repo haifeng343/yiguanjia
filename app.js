@@ -25,41 +25,33 @@ App({
     isIphoneX: false,
   },
   // 封装网络请求
-  https(httpstype, url, data) {
-    var token = '';
-    let that = this;
-    dd.getStorageSync({
-      key: 'userInfo',
-      success(res) {
-        if (res) {
-          this.globalData.token = res.data.token;
-        }
-      }
-    })
+  http(api, data) {
+    console.log(data)
+    let endurl = encodeURI(this.globalData.serverurl + api);
+    let a = dd.getStorageSync({ key: 'userInfo' })
     dd.showLoading();
-    let endurl = encodeURI('https://api.mfetv.top' + url);
     return new Promise((resolve, reject) => {
       dd.httpRequest({
         headers: {
           "Content-Type": "application/json",
-          Authorization: 'Bearer ' + token
+          Authorization: 'Bearer ' + a.data.token
         },
         url: endurl,
-        method: httpstype,
-        data:JSON.stringify(data),
+        method: 'POST',
+        // 需要手动调用JSON.stringify将数据进行序列化
+        data: JSON.stringify(data),
         dataType: 'json',
         success: (res) => {
           resolve(res)
         },
         fail: (res) => {
           reject(res)
-
         },
-        complete: (res) => {
+        complete: function (res) {
           dd.hideLoading()
         }
       })
     })
-  },
-  
+  }
+
 });

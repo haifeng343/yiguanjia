@@ -209,7 +209,15 @@ Page({
     this.getData();
   },
   getData() {
-    
+    app.http('/api/sample/getsamplelist', {
+      name: '',
+      pageIndex: 1,
+      pageSize: 10,
+      fldSort: '',
+      fldName: ''
+    }).then(res => {
+      console.log(res)
+    })
   },
   // 获取搜索内容
   hasKeyword(e) {

@@ -46,7 +46,7 @@
   <view class="shai" a:if="{{showDialog}}">
     <view class="shaiTitle">
       <view>
-        材料类型
+        样本类型
       </view>
       <view class="bbt" catchTap="toggle">
         <image mode="scaleToFill" src="{{toggle1==true?'../../img/top.png':'../../img/up.png'}}" class="off"/>

@@ -7,7 +7,9 @@ App({
     // console.log('SDKVersion', dd.SDKVersion);
     // https://blog.csdn.net/weixin_30536513/article/details/102122187
     this.globalData.corpId = options.query.corpId;
+    this.globalData.serverurl = "https://api.mfetv.top";
     this.globalData.isIphoneX = dd.getSystemInfoSync().model == "iPhone10,3" ? true : false;
+    console.log(this)
   },
   onShow() {
     // console.log('App Show');
@@ -24,26 +26,27 @@ App({
   },
   // 封装网络请求
   https(httpstype, url, data) {
-    let token = '';
-    dd.getStorage({
+    var token = '';
+    let that = this;
+    dd.getStorageSync({
       key: 'userInfo',
       success(res) {
         if (res) {
-          token = res.data.token
+          this.globalData.token = res.data.token;
         }
       }
     })
     dd.showLoading();
-    let endurl = encodeURI(this.globaldata.serverurl + url);
+    let endurl = encodeURI('https://api.mfetv.top' + url);
     return new Promise((resolve, reject) => {
       dd.httpRequest({
         headers: {
           "Content-Type": "application/json",
-          Authorization: 'Bearer ' + this.globalData.token
+          Authorization: 'Bearer ' + token
         },
         url: endurl,
         method: httpstype,
-        data: data,
+        data:JSON.stringify(data),
         dataType: 'json',
         success: (res) => {
           resolve(res)
@@ -58,7 +61,5 @@ App({
       })
     })
   },
-  // app.https('GET', '/api/v1/dailyTunneling?id=' + this.data.curTbmId + '&time=' + startdate).then(res => {
-  //   console.log(res)
-  // })
+  
 });

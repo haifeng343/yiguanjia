@@ -1,0 +1,43 @@
+Page({
+  data: {
+    shenList:[
+      {
+        id:1,
+        name:'申请实验',
+        img:'../../img/a1.png'
+      },
+      {
+        id:2,
+        name:'挂失申请',
+        img:'../../img/a2.png'
+      },
+      {
+        id:3,
+        name:'归还申请',
+        img:'../../img/a3.png'
+      },
+      {
+        id:4,
+        name:'延期申请',
+        img:'../../img/a4.png'
+      },
+      {
+        id:5,
+        name:'消耗完申请',
+        img:'../../img/a5.png'
+      },
+      {
+        id:6,
+        name:'转移申请',
+        img:'../../img/a6.png'
+      },
+      {
+        id:7,
+        name:'清理过期',
+        img:'../../img/a7.png'
+      },
+    ]
+  },
+  onLoad() {},
+
+});

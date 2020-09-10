@@ -1,3 +1,5 @@
 {
-  "defaultTitle": "我的借出"
+  "defaultTitle": "我的借出",
+  "pullRefresh":true,
+  "allowsBounceVertical":false
 }

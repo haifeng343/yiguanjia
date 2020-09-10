@@ -58,7 +58,7 @@
               <view class="wrap">品牌: 圣克鲁斯生物技术圣克鲁斯生物技术圣克鲁斯生物技术</view></view></view>
           <view class="itemJieTent">
             <view class="itemJieTentItem">
-              <view class="itemJieTentItemLabel">材料类型:</view>
+              <view class="itemJieTentItemLabel">样本类型:</view>
               <view class="itemJieTentItemTxt">细胞</view></view>
             <view class="itemJieTentItem">
               <view class="itemJieTentItemLabel">组织类型:</view>
@@ -115,6 +115,57 @@
       <view class="ToustTxt">
       是否确认此操作？
       </view>
+      <!-- <view class="TouseContainer">
+        <view class="TouseItem">
+          <view class="TouseItemLebael">
+            编号
+          </view>
+          <view class="TouseItemText">
+             BAY3425
+          </view>
+        </view>
+        <view class="TouseItem">
+          <view class="TouseItemLebael">
+            名称
+          </view>
+          <view class="TouseItemText">
+             凯撒奖的斯卡迪就撒网额欧威我去哦披萨打死
+          </view>
+        </view>
+        <view class="TouseItem">
+          <view class="TouseItemLebael">
+            材料类型
+          </view>
+          <view class="TouseItemText">
+             细胞
+          </view>
+        </view>
+        <view class="TouseItem">
+          <view class="TouseItemLebael">
+            组织类型
+          </view>
+          <view class="TouseItemText">
+             正常组织
+          </view>
+        </view>
+        <view class="TouseItem">
+          <view class="TouseItemLebael">
+            容量
+          </view>
+          <view class="TouseItemText">
+             20ml
+          </view>
+        </view>
+        <view class="TouseItem">
+          <view class="TouseItemLebael">
+            申请人
+          </view>
+          <view class="TouseItemText">
+             张三
+          </view>
+        </view>
+
+      </view> -->
     </view>
     <view class="ToustFooter">
       <view class="ToustBtn">
@@ -127,6 +178,9 @@
   </view>
   <!-- 知道了 -->
   <view class="knowDialog" a:if="{{showDialog}}">
+    <view class="knowTitle">
+        提示
+    </view>
     <view class="knowContent">
       借用时未选择归还，故未保留仓位审核通过由仓管重新入库
     </view>

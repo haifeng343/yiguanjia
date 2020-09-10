@@ -86,7 +86,7 @@
           <view>品牌: 圣克鲁斯生物技术</view></view></view>
       <view class="itemJieTent">
         <view class="itemJieTentItem">
-          <view class="itemJieTentItemLabel">材料类型:</view>
+          <view class="itemJieTentItemLabel">样本类型:</view>
           <view class="itemJieTentItemTxt">细胞</view></view>
         <view class="itemJieTentItem">
           <view class="itemJieTentItemLabel">组织类型:</view>

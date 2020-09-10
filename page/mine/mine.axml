@@ -1,0 +1,118 @@
+<view class="page">
+  <view class="mTop">
+    <view class="mLeft">
+      <view class="start">
+        <view class="mName">
+          博文老师
+        </view>
+        <view class="mTag">
+          实验员
+        </view>
+      </view>
+      <view class="hao">
+        工号：YBR5638956
+      </view>
+    </view>
+    <navigator url="/page/my/my" class="avator" onTap="toMy">
+      <image src="../../img/avator.png" class="avatorImg"/>
+      <view class="pen">
+        <image src="../../img/pen.png" class="penImg"/>
+      </view>
+    </navigator>
+  </view>
+  <view class="shenhe">
+    <view class="shenheItem">
+      <view class="shenheText">
+        12
+      </view>
+      <view class="shenheLabel">
+        我发起的
+      </view>
+    </view>
+    <view class="shenheItem">
+      <view class="shenheText">
+        12
+      </view>
+      <view class="shenheLabel">
+        待处理的
+      </view>
+    </view>
+    <view class="shenheItem">
+      <view class="shenheText">
+        12
+      </view>
+      <view class="shenheLabel">
+        已处理的
+      </view>
+    </view>
+    <view class="shenheItem">
+      <view class="shenheText">
+        12
+      </view>
+      <view class="shenheLabel">
+        抄送我的
+      </view>
+    </view>
+  </view>
+  <view class="cailiao">
+    <view class="cailiaoBg">
+    </view>
+    <view class="cailiaoContent">
+      <view class="column">
+        <view class="cailiaoTitle">
+          材料列表
+        </view>
+        <view class=" cailiaoT1">
+          Sample library list
+        </view>
+      </view>
+      <view class="all">
+        查看全部
+      </view>
+    </view>
+  </view>
+  <view class="list">
+    <view class="item" a:for="{{shenList}}" key="{{index}}">
+      <image mode="scaleToFill" src="{{item.img}}" class="a1"/>
+      <view class="aTxt">
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+  <view class="navTitle">
+    <view class="nTitle">
+      我的列表
+    </view>
+    <view>
+      查看全部列表
+      <image mode="scaleToFill" src="../../img/right.png" class="right"/>
+    </view>
+  </view>
+  <view class="list">
+    <view class="item" a:for="{{shenList}}" key="{{index}}">
+      <image mode="scaleToFill" src="{{item.img}}" class="a1"/>
+      <view class="aTxt">
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+  <view class="lastC">
+  </view>
+  <view class="footer">
+    <view class="footer1">
+      <view class="footerItem">
+        <image mode="scaleToFill" src="../../img/index.png" class="footerImg"/>
+        <view>
+          首页
+        </view>
+      </view>
+      <view class="saoma">
+        <image mode="scaleToFill" src="../../img/sao.png" class="saomaPng"/>
+      </view>
+      <view class="footerItem">
+        <image mode="scaleToFill" src="../../img/mys.png" class="footerImg"/>
+        <view class="black">
+          我的
+        </view>
+      </view>
+    </view>

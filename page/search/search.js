@@ -1,3 +1,5 @@
+const app = getApp();
+const neil = require('../../utils/request.js');
 Page({
   data: {
     navList1: [//类型
@@ -203,7 +205,11 @@ Page({
     select1: true,//全选
   },
   onLoad() {
-    console.log(this)
+    console.log(this);
+    this.getData();
+  },
+  getData() {
+    
   },
   // 获取搜索内容
   hasKeyword(e) {
@@ -275,5 +281,21 @@ Page({
     this.setData({
       select1: !this.data.select1
     })
-  }
+  },
+  onPullDownRefresh() {
+    // neil.http('post','/api/sample/getsamplelist',{
+    //     name:'',
+    //     pageIndex:1, 
+    //     pageSize:10,
+    //     fldSort:'',
+    //     fldName:''
+    //   }).then(res=>{
+    //     console.log(res)
+    //   })
+    // 页面被下拉
+    dd.stopPullDownRefresh();
+  },
+  onReachBottom() {
+    // 页面被拉到底部
+  },
 });

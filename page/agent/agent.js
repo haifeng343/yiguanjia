@@ -28,4 +28,11 @@ Page({
       showId: e.currentTarget.dataset.id
     })
   },
+   onPullDownRefresh() {
+    // 页面被下拉
+    dd.stopPullDownRefresh();
+  },
+  onReachBottom() {
+    // 页面被拉到底部
+  },
 });

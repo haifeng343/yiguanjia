@@ -87,7 +87,7 @@
         <view class="itemJieStatus">
           <view class="itemJieStatusItem">
             <view class="itemJieStatusItemLabel">
-            材料类型
+            样本类型
             </view>
             <view class="itemJieStatusItemTxt">
               细胞

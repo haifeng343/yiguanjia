@@ -11,7 +11,7 @@
       <view class="itemBot">
         <view class="itemTitle nowrap">重组Anti-alpha smooth muscle Actismooth mus...</view>
         <view class="itemVenter">
-          <view class="m1">材料类型：细胞</view>
+          <view class="m1">样本类型：细胞</view>
           <view class="m1">组织类型：正常组织</view>
         </view>
       </view>
@@ -34,6 +34,10 @@
         <view class="bo"></view>
         已占用
       </view>
+      <view class="navItem">
+        <view class="bo"></view>
+        推荐位置
+      </view>
     </view>
     <view class="itemContent">
       <view class="itemHeader">
@@ -44,36 +48,58 @@
         <!-- <view class="m3">房间：301</view> -->
       </view>
       <view class="itemBot2">
+      <picker value="{{val}}" range="{{rangeArr}}" onChange="change1">
         <view class="between">
           <view>
           房间号  
           </view>
           <view>
-            301
+            {{rangeArr[val]}}
             <image src="../../img/right.png" class="right"/>
           </view>
         </view>
+      </picker>
+      <picker value="{{val}}" range="{{rangeArr}}" onChange="change1">
+        <view class="between">
+          <view>
+          容器类型  
+          </view>
+          <view>
+            {{rangeArr[val]}}
+            <image src="../../img/right.png" class="right"/>
+          </view>
+        </view>
+      </picker>
+      <picker value="{{val}}" range="{{rangeArr}}" onChange="change1">
         <view class="between">
           <view>
           容器  
           </view>
           <view>
-            冰箱YBR123
+            {{rangeArr[val]}}
             <image src="../../img/right.png" class="right"/>
           </view>
         </view>
+      </picker>
       </view>
     </view>
     <view class="itemContent">
       <view class="itemHeader borderNone">
         <view>
-          <image mode="scaleToFill" src="../../img/dt5.png" class="dt3"></image>
+          <image mode="scaleToFill" src="../../img/dt3.png" class="dt3"></image>
           层级
         </view>
       </view>
-      <view class="itemBot1">
-        <view class="item1" a:for="{{navList}}" key="{{index}}">
-          <image mode="scaleToFill" src="../../img/d.png"/ class="d">
+      <view class="itemBot4">
+        <view class="itemCont1">
+          <view class="itemCont1Item" a:for="{{25}}">
+          <image mode="scaleToFill" src="../../img/c.png" class="cPng"/>
+          </view>
+        </view>
+        <view class="itemCont2">
+          <view class="itemCont2Item {{showCengId==(index+1)?'active1':''}}" a:for="{{cengList}}" key="{{index}}" catchTap="changeCeng" data-id="{{index+1}}">
+            大层{{item}}
+          </view>
         </view>
       </view>
     </view>
@@ -99,16 +125,32 @@
       </view>
       <view class="parent">
         <movable-area class="body">
-          <movable-view damping="{{20}}" direction="all" class="list" scale="{{true}}" scale-min="{{1}}" scale-max="{{1.4}}">
-            <view class="item" a:for="{{cells}}" key="index" data-item="{{item}}" onTap="showItem">
+          <movable-view damping="{{20}}" direction="all" class="list" scale="{{true}}" scale-min="{{1}}" scale-max="{{1.7}}">
+            <view class="{{tag==9?'item':'items'}}" a:for="{{items}}" key="index" data-item="{{item}}" data-index="{{index+1}}" onTap="showItem">
               <image mode="scaleToFill" src="../../img/dd.png" class="dd"/>
               <view class="itemName">
-                {{item.number}}
+                {{item.name}}
               </view>
             </view>
           </movable-view>
         </movable-area>
       </view>
+    </view>
+  </view>
+   
+    <view class="lastChild">
+      
+    </view>
+  <!-- 底部 -->
+  <view class="posiFooter">
+    <view class="posiBtn">
+      取消
+    </view>
+    <!-- <view class="posiBtn">
+      入库
+    </view> -->
+    <view class="posiBtn disableBtn">
+      入库
     </view>
   </view>
 </view>

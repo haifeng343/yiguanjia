@@ -7,7 +7,8 @@
     "page/agent/agent",
     "page/takeOut/takeOut",
     "page/application/application",
-    "page/position/position"
+    "page/position/position",
+    "page/mine/mine"
   ],
   "window": {
     "enableWK": "YES",

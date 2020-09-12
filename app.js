@@ -1,6 +1,6 @@
 App({
   onLaunch(options) {
-    console.log('App Launch', options);
+    // console.log('App Launch', options);
 
     // dd.setStorage('corpId', options.query.corpId);
     // console.log('getSystemInfoSync', dd.getSystemInfoSync());
@@ -9,7 +9,6 @@ App({
     this.globalData.corpId = options.query.corpId;
     this.globalData.serverurl = "https://api.mfetv.top";
     this.globalData.isIphoneX = dd.getSystemInfoSync().model == "iPhone10,3" ? true : false;
-    console.log(this)
   },
   onShow() {
     // console.log('App Show');
@@ -26,7 +25,6 @@ App({
   },
   // 封装网络请求
   http(api, data) {
-    console.log(data)
     let endurl = encodeURI(this.globalData.serverurl + api);
     let a = dd.getStorageSync({ key: 'userInfo' })
     dd.showLoading();

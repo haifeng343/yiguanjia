@@ -792,3 +792,6 @@ button {
 .black {
   color: #282828;
 }
+.bt68{
+  bottom: 68rpx!important;
+}

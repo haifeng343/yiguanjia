@@ -20,6 +20,7 @@
       </view>
     </navigator>
   </view>
+  <!-- 审核 -->
   <view class="shenhe">
     <view class="shenheItem">
       <view class="shenheText">
@@ -54,6 +55,7 @@
       </view>
     </view>
   </view>
+  <!-- 材料列表 -->
   <view class="cailiao">
     <view class="cailiaoBg">
     </view>
@@ -71,14 +73,16 @@
       </view>
     </view>
   </view>
+  <!-- 申请列表 -->
   <view class="list">
-    <view class="item" a:for="{{shenList}}" key="{{index}}">
+    <view class="item" a:for="{{shenList}}" key="{{index}}" data-id="{{item.id}}" onTap="goToForm">
       <image mode="scaleToFill" src="{{item.img}}" class="a1"/>
       <view class="aTxt">
         {{item.name}}
       </view>
     </view>
   </view>
+  <!-- 我的列表 -->
   <view class="navTitle">
     <view class="nTitle">
       我的列表
@@ -89,7 +93,7 @@
     </view>
   </view>
   <view class="list">
-    <view class="item" a:for="{{shenList}}" key="{{index}}">
+    <view class="item" a:for="{{shenList1}}" key="{{index}}">
       <image mode="scaleToFill" src="{{item.img}}" class="a1"/>
       <view class="aTxt">
         {{item.name}}
@@ -98,7 +102,8 @@
   </view>
   <view class="lastC">
   </view>
-  <view class="footer">
+  <!-- 底部 -->
+  <view class="footer {{isIphoneX==true?'bt68':''}}">
     <view class="footer1">
       <view class="footerItem">
         <image mode="scaleToFill" src="../../img/index.png" class="footerImg"/>
@@ -106,7 +111,7 @@
           首页
         </view>
       </view>
-      <view class="saoma">
+      <view class="saoma" onTap="saoma">
         <image mode="scaleToFill" src="../../img/sao.png" class="saomaPng"/>
       </view>
       <view class="footerItem">

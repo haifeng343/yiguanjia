@@ -37,7 +37,7 @@
       </view>
     </view>
     <view class="list">
-      <view class="listTitle">冻存盒信息</view>
+      <!-- <view class="listTitle">冻存盒信息</view>
       <view class="itemJie itemJie1" style="margin-bottom:0">
         <image src="../../img/delete.png" class="delete"/>
         <view class="itemJieTop borderNone">
@@ -57,20 +57,24 @@
             选择位置
           </view>
         </view>
-      </view>
+      </view> -->
     </view>
   </view>
   <view class="itemJieToggle">
     <view>
     材料信息
     </view>
-    <view>
+    <view a:if="{{!unfold}}" onTap="toggle">
     收起
+      <image src="../../img/top.png" class="off"/>
+    </view>
+    <view a:else onTap="toggle">
+    展开
       <image src="../../img/up.png" class="off"/>
     </view>
-  </view>
-  <view class="itemJie">
-    <image src="../../img/delete.png" class="delete"/>
+  </view> 
+  <view class="itemJie" a:for="{{list}}" key="index">
+    <image src="../../img/delete.png" data-index="{{index}}" onTap="deleteItem" class="delete"/>
     <view class="itemJieTop">
       <view class="start">
         <image src="../../img/order.png" class="order"></image>
@@ -125,8 +129,9 @@
         </view>
         <view class="itemJieFoterRight">
           <input type="digit" class="input2s" cursor-spacing="60"/>ml</view></view></view></view></view></view>
+  
   <view class="lastChild"></view>
-  <image src="../../img/add.png" class="add"/>
+  <image src="../../img/add.png" class="add" onTap="goSearch"/>
   <!-- 弹出窗 -->
   <view class="mask" a:if="{{showDialog}}">
   </view>
@@ -140,10 +145,10 @@
       </view>
     </view>
     <view class="ToustFooter">
-      <view class="ToustBtn">
+      <view class="ToustBtn" onTap="deleteCancel">
         取消
       </view>
-      <view class="ToustBtn">
+      <view class="ToustBtn" onTap="deleteSure">
         确定
       </view>
     </view>
@@ -152,19 +157,19 @@
   <view class="takeFooter">
     <view class="takeTxt1">
         合计材料:
-      <text class="takeNumber">22</text>条
+      <text class="takeNumber">{{list.length?list.length:0}}</text>条
     </view>
-    <!--<view class="takeBtn">
-      提交</view> -->
-    <view class="takeBtn takeBtn1" onTap="submit">
+    <view class="takeBtn" a:if="{{!list}}">
+      提交</view>
+    <view class="takeBtn takeBtn1" a:else onTap="submit">
       提交
     </view>
   </view>
 </block>
 <!-- 没有数据 -->
-<block a:if="{{list}}">
-  <view class="list">
-    <view class="listTitle">材料列表</view></view>
+<block a:if="{{!list}}">
   <view class="noPage">
     <image src="../../img/zanwu.png" class="zanwuImg"/>
-    <view class="zanwuBtn">去选择材料</view></view></block>
+    <view class="zanwuBtn">去选择材料</view>
+  </view>
+</block>

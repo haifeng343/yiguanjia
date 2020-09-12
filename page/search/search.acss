@@ -269,5 +269,10 @@ checkbox {
 .ml12 {
   margin-left: 12rpx;
 }
-
+.order{
+  margin-left: 16rpx;
+}
+.list{
+  margin-top: 108rpx;
+}
 @import '../takeOut/takeOut.acss';

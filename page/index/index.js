@@ -28,7 +28,7 @@ Page({
                     data: JSON.stringify({
                         auth_code: res.authCode,
                         auth_corpid: app.globalData.corpId,
-                    }),
+                    }), 
                     headers: {
                         "Content-Type": "application/json"
                     },
@@ -45,6 +45,7 @@ Page({
                                 dingid: res.data.result.dingid,
                                 rolename: res.data.result.rolename,
                                 unionid: res.data.result.unionid,
+                                user:res.data.result
                             }
                         })
                     },

@@ -202,21 +202,70 @@ Page({
     date2: '',
     toggle1: false,//展开收起
     showDialog: false,//展开筛选
-    select1: true,//全选
+    select1: false,//全选
+    pageData: null,//数据
+    count: 0,//勾选条数
   },
   onLoad() {
     console.log(this);
     this.getData();
   },
+  // 获取数据
   getData() {
     app.http('/api/sample/getsamplelist', {
-      name: '',
+      name: this.data.keyword,
       pageIndex: 1,
       pageSize: 10,
       fldSort: '',
       fldName: ''
     }).then(res => {
-      console.log(res)
+      if (res.data.success) {
+        let tempArr = res.data.result.pageData;
+        tempArr.forEach(item => {
+          item.select = false;
+        })
+        this.setData({
+          pageData: tempArr
+        })
+      }
+    })
+  },
+  clearInput() {
+    this.setData({
+      keyword: ''
+    })
+    this.getData();
+  },
+  setChange(e) {
+    let tempArr = this.data.pageData;
+    let arr = [];
+    tempArr.forEach(item => {
+      if (item.id == e.currentTarget.dataset.id) {
+        if (!item.select) {
+          item.select = true;
+        } else {
+          item.select = false;
+        }
+      }
+    })
+    let a = tempArr.filter(item => {
+      return item.select == true
+    }).map(item => {
+      return item.id
+    })
+    if (a.length == tempArr.length) {
+      this.setData({
+        select1: true
+      })
+    } else {
+      this.setData({
+        select1: false
+      })
+    }
+    console.log(a)
+    this.setData({
+      pageData: tempArr,
+      count: a.length,
     })
   },
   // 获取搜索内容
@@ -224,6 +273,10 @@ Page({
     this.setData({
       keyword: e.detail.value
     })
+  },
+  // 搜索
+  search() {
+    this.getData();
   },
   // 获取日期
   change1(e) {
@@ -286,8 +339,14 @@ Page({
   },
   // 全选
   allSelect() {
+    let tempArr = this.data.pageData;
+    tempArr.forEach(item => {
+      item.select = !item.select
+    })
     this.setData({
-      select1: !this.data.select1
+      pageData: tempArr,
+      select1: !this.data.select1,
+      count: !this.data.select1 == true ? tempArr.length : 0
     })
   },
   onPullDownRefresh() {
@@ -305,5 +364,24 @@ Page({
   },
   onReachBottom() {
     // 页面被拉到底部
+  },
+  submit() {
+    let pages = getCurrentPages();//页面路由
+    let tempArr = this.data.pageData;
+    let a = tempArr.filter(item=>{
+      return item.select ==true
+    }).map(item=>{
+      return item
+    })
+    console.log(a)
+    let prevPage = pages[pages.length - 2];
+    prevPage.setData({
+      list:a,
+      unfold:true
+    })
+    dd.navigateBack({
+      delta:1
+    })
+    console.log(prevPage);
   },
 });

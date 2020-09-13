@@ -203,6 +203,23 @@ Page({
         }
       })
     }
+    // 消耗完申请
+    if (this.data.type == 8) {
+      app.http('/api/apply/applyexpire', {
+        product_type_id: this.data.productList[0].id,
+        product_type: this.data.productList[0].name,
+        remarks: '',
+        outstorage: {
+          sample: this.data.list
+        }
+      }).then(res => {
+        if (res.data.success) {
+          dd.showToust({
+            title: res.data.message
+          })
+        }
+      })
+    }
   },
   goSearch() {
     dd.navigateTo({

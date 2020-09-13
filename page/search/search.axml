@@ -22,6 +22,9 @@
           </view>
           <image src="../../img/order.png" class="order"></image>
           <view class="itemJieCode">YB202008260004YB202008260004YB202008260004</view></view>
+          <view class="red" a:if="{{type==1}}">
+            首次入库
+          </view>
       </view>
       <view class="itemJieContent">
         <view class="itemJieContentTop">
@@ -73,7 +76,16 @@
           <view class="itemJieFoterRight">
             <input type="digit" class="input2s" cursor-spacing="60"/>ml</view>
         </view>
+
+        <view class="itemJieFooter" a:if="{{type==1}}">
+          <view class="itemJieBtn" data-item="{{item}}" onTap="saoma">
+            扫码入库
+          </view>
+        </view>
       </view>
+    </view>
+    <view class="lastChild">
+      
     </view>
   </view>
 </view>

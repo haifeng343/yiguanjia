@@ -6,18 +6,63 @@
           <image mode="scaleToFill" src="../../img/dt1.png" class="dt"></image>
           样本信息
         </view>
-        <view class="m2">DYA3425</view>
+        <view class="m2">{{option.name}}</view>
       </view>
       <view class="itemBot">
         <view class="itemTitle nowrap">重组Anti-alpha smooth muscle Actismooth mus...</view>
         <view class="itemVenter">
-          <view class="m1">样本类型：细胞</view>
-          <view class="m1">组织类型：正常组织</view>
+          <view class="m1">样本类型：{{option.sample_type}}</view>
+          <view class="m1">组织类型：{{option.tissuestype}}</view>
         </view>
       </view>
     </view>
-    <view class="btn">选择位置</view>
-    <view class="navList">
+    <!-- <view class="btn">选择位置</view> -->
+   
+    <view class="itemContent">
+      <view class="itemHeader">
+        <view>
+          <image mode="scaleToFill" src="../../img/dt2.png" class="dt1"></image>
+          存放位置
+        </view>
+        <!-- <view class="m3">房间：301</view> -->
+      </view>
+      <view class="itemBot2">
+      <picker value="{{val}}" range-key="name" range="{{roomList}}" onChange="change">
+        <view class="between">
+          <view>
+          房间号  
+          </view>
+          <view>
+            {{roomList[val].name}}
+            <image src="../../img/right.png" class="right"/>
+          </view>
+        </view>
+      </picker>
+      <picker value="{{val1}}" range-key="name" range="{{containerList}}" onChange="change1">
+        <view class="between">
+          <view>
+          容器类型  
+          </view>
+          <view>
+            {{containerList[val1].name}}
+            <image src="../../img/right.png" class="right"/>
+          </view>
+        </view>
+      </picker> 
+      <picker value="{{val2}}" range-key="no" range="{{bxList}}" onChange="change2">
+        <view class="between">
+          <view>
+          容器  
+          </view>
+          <view>
+            {{bxList[val2].no}}
+            <image src="../../img/right.png" class="right"/>
+          </view>
+        </view>
+      </picker>
+      </view>
+    </view>
+     <view class="navList">
       <view class="navItem">
         <view class="bo"></view>
         可选
@@ -40,64 +85,21 @@
       </view>
     </view>
     <view class="itemContent">
-      <view class="itemHeader">
-        <view>
-          <image mode="scaleToFill" src="../../img/dt2.png" class="dt1"></image>
-          存放位置
-        </view>
-        <!-- <view class="m3">房间：301</view> -->
-      </view>
-      <view class="itemBot2">
-      <picker value="{{val}}" range="{{rangeArr}}" onChange="change1">
-        <view class="between">
-          <view>
-          房间号  
-          </view>
-          <view>
-            {{rangeArr[val]}}
-            <image src="../../img/right.png" class="right"/>
-          </view>
-        </view>
-      </picker>
-      <picker value="{{val}}" range="{{rangeArr}}" onChange="change1">
-        <view class="between">
-          <view>
-          容器类型  
-          </view>
-          <view>
-            {{rangeArr[val]}}
-            <image src="../../img/right.png" class="right"/>
-          </view>
-        </view>
-      </picker>
-      <picker value="{{val}}" range="{{rangeArr}}" onChange="change1">
-        <view class="between">
-          <view>
-          容器  
-          </view>
-          <view>
-            {{rangeArr[val]}}
-            <image src="../../img/right.png" class="right"/>
-          </view>
-        </view>
-      </picker>
-      </view>
-    </view>
-    <view class="itemContent">
       <view class="itemHeader borderNone">
         <view>
-          <image mode="scaleToFill" src="../../img/dt3.png" class="dt3"></image>
+          <image src="../../img/dt3.png" class="dt3"></image>
           层级
         </view>
       </view>
       <view class="itemBot4">
         <view class="itemCont1">
-          <view class="itemCont1Item" a:for="{{25}}">
-          <image mode="scaleToFill" src="../../img/c.png" class="cPng"/>
+          <view class="itemCont1Item" a:for="{{ctList}}" key="index" data-item="{{item}}" data-index="{{index}}" onTap="getJiazi">
+          <image a:if="{{showXiaoCengId==index}}" src="../../img/c1.png" class="cPng"/>
+          <image a:else src="../../img/c.png" class="cPng"/>
           </view>
         </view>
         <view class="itemCont2">
-          <view class="itemCont2Item {{showCengId==(index+1)?'active1':''}}" a:for="{{cengList}}" key="{{index}}" catchTap="changeCeng" data-id="{{index+1}}">
+          <view class="itemCont2Item {{showCengId==(index+1)?'active1':''}}" a:for="{{levela}}" key="{{index}}" catchTap="changeCeng" data-id="{{index+1}}">
             大层{{item}}
           </view>
         </view>
@@ -106,13 +108,14 @@
     <view class="itemContent">
       <view class="itemHeader borderNone">
         <view>
-          <image mode="scaleToFill" src="../../img/dt5.png" class="dt3"></image>
+          <image src="../../img/dt5.png" class="dt3"></image>
           架子
         </view>
       </view>
       <view class="itemBot1">
-        <view class="item1" a:for="{{navList}}" key="{{index}}">
-          <image mode="scaleToFill" src="../../img/d.png"/ class="d">
+        <view class="item1" a:for="{{jiazList}}" key="index" data-item="{{item}}" data-index="{{index}}" onTap="getHezi">
+          <image a:if="{{showJiaziId==index}}" src="../../img/d1.png" class="d"/>
+          <image a:else src="../../img/d.png" class="d"/>
         </view>
       </view>
     </view>
@@ -121,14 +124,15 @@
         <view>
           <image mode="scaleToFill" src="../../img/dt4.png" class="dt4"></image>
           冻存盒
-        </view>
+        </view> 
       </view>
       <view class="parent">
         <movable-area class="body">
           <movable-view damping="{{20}}" direction="all" class="list" scale="{{true}}" scale-min="{{1}}" scale-max="{{1.7}}">
-            <view class="{{tag==9?'item':'items'}}" a:for="{{items}}" key="index" data-item="{{item}}" data-index="{{index+1}}" onTap="showItem">
-              <image mode="scaleToFill" src="../../img/dd.png" class="dd"/>
-              <view class="itemName">
+            <view class="{{samplebox==1?'item':'items'}}" a:for="{{items}}" key="index" data-item="{{item}}" data-index="{{index+1}}" onTap="showItem">
+              <image mode="scaleToFill" a:if="{{showHeziId==index+1}}" src="../../img/dd1.png" class="dd"/>
+              <image mode="scaleToFill" a:else src="../../img/dd.png" class="dd"/>
+              <view class="itemName {{showHeziId==index+1?'active4':''}}">
                 {{item.name}}
               </view>
             </view>
@@ -146,10 +150,10 @@
     <view class="posiBtn">
       取消
     </view>
-    <!-- <view class="posiBtn">
+    <view class="posiBtn" a:if="{{showHeziId}}" onTap="ruku">
       入库
-    </view> -->
-    <view class="posiBtn disableBtn">
+    </view>
+    <view class="posiBtn disableBtn" a:else>
       入库
     </view>
   </view>

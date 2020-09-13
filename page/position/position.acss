@@ -283,6 +283,7 @@
 .itemBot4 {
   width: 100%;
   height: auto;
+  min-height: 340rpx;
   box-sizing: border-box;
   padding: 0 24rpx;
   display: flex;
@@ -298,6 +299,9 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   padding-bottom: 8rpx;
+}
+.active4{
+color: #1DC084;
 }
 
 .itemCont1Item {

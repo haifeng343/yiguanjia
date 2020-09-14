@@ -1,0 +1,13 @@
+require('@alipay/appx-compiler/lib/sjsEnvInit');
+require('./config$');
+
+require('../../page/index/index?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/my/my?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/loanList/loanList?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/search/search?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/agent/agent?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/takeOut/takeOut?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/application/application?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/position/position?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/mine/mine?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/applyList/applyList?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');

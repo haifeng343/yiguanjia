@@ -18,22 +18,25 @@
     <view class="itemJie" a:for="{{pageData}}" key="index">
       <view class="itemJieTop">
         <view class="start" data-id="{{item.id}}" onTap="setChange">
-          <view class="checkbox {{item.select==true?'checkboxed':''}}">
+          <view class="checkbox {{item.select==true?'checkboxed':''}}" a:if="{{type !== 1}}">
           </view>
-          <image src="../../img/order.png" class="order"></image>
-          <view class="itemJieCode">YB202008260004YB202008260004YB202008260004</view></view>
-          <view class="red" a:if="{{type==1}}">
-            首次入库
-          </view>
+          <image src="../../img/order.png" class="order"></image> 
+          <view class="itemJieCode">{{item.no}}</view></view>
+          <view class="red" a:if="{{type==1}}">首次入库</view>
+          <view class="red" a:if="{{type==2}}">材料转移</view>
+          <view class="red" a:if="{{type==6}}">实验取出</view>
+          <view class="red" a:if="{{type==7}}">清理过期</view>
       </view>
       <view class="itemJieContent">
         <view class="itemJieContentTop">
           <view class="itemJieImg">
             <image src="../../img/product.png" class="img1"></image></view>
           <view class="itemJieTxt">
-            <view class="itemJietxt1">VSTM1 monoclonal antibody edVSTM1 monoclonal antibody edVSTM1 monoclonal antibody ed</view>
-            <view>货号: H00284415-M03</view>
-            <view>品牌: 圣克鲁斯生物技术</view></view></view>
+            <view class="itemJietxt1">{{item.name}}</view>
+            <!-- <view>货号: H00284415-M03</view>
+            <view>品牌: 圣克鲁斯生物技术</view> -->
+          </view>
+        </view>
         <view class="itemJieTent">
           <view class="itemJieTentItem">
             <view class="itemJieTentItemLabel">样本类型:</view>
@@ -45,9 +48,20 @@
             <view class="itemJieTentItemLabel">肿瘤类型:</view>
             <view class="itemJieTentItemTxt">{{item.diseasetype}}</view></view>
           <view class="itemJieTentItem">
-            <view class="itemJieTentItemLabel">溶冻次数:</view>
-            <view class="itemJieTentItemTxt red">15次</view></view>
-          <view class="itemJieTentItem itemJieTentItem1">
+            <view class="itemJieTentItemLabel">融冻次数:</view>
+            <view class="itemJieTentItemTxt red">{{item.thawcount}}次</view></view>
+          <view class="itemJieTentItem">
+            <view class="itemJieTentItemLabel">容量:</view>
+            <view class="itemJieTentItemTxt">{{item.size}}ml</view></view>
+          <!-- <view class="itemJieTentItem">
+            <view class="itemJieTentItemLabel">规格:</view>
+            <view class="itemJieTentItemTxt">{{item.size}}ml</view></view> -->
+
+
+
+
+
+          <!-- <view class="itemJieTentItem itemJieTentItem1">
             <view class="itemJieTentItemLabel">转移前冻存盒位置:</view>
             <view class="itemJieTentItemTxt goto">3L冰箱A11大层3小层2</view>
           </view>
@@ -57,18 +71,12 @@
           <view class="itemJieTentItem" a:if="{{type !== 5}}">
             <view class="itemJieTentItemLabel">归还类型:</view>
             <view class="itemJieTentItemTxt">归还</view></view>
-          <view class="itemJieTentItem">
-            <view class="itemJieTentItemLabel">规格:</view>
-            <view class="itemJieTentItemTxt">20ml</view></view>
-          <view class="itemJieTentItem">
-            <view class="itemJieTentItemLabel">容量:</view>
-            <view class="itemJieTentItemTxt">20ml</view></view>
           <view class="itemJieTentItem" a:if="{{type !== 6}}">
             <view class="itemJieTentItemLabel">出库时间:</view>
             <view class="itemJieTentItemTxt">2010-10-12</view></view>
           <view class="itemJieTentItem" a:if="{{type !== 6}}">
             <view class="itemJieTentItemLabel">预计归还时间:</view>
-            <view class="itemJieTentItemTxt">2010-10-12</view></view></view>
+            <view class="itemJieTentItemTxt">2010-10-12</view></view></view> -->
         <view class="itemJieFoter" a:if="{{type==4}}">
           <view class="">
             使用量
@@ -77,17 +85,25 @@
             <input type="digit" class="input2s" cursor-spacing="60"/>ml</view>
         </view>
 
-        <view class="itemJieFooter" a:if="{{type==1}}">
-          <view class="itemJieBtn" data-item="{{item}}" onTap="saoma">
+        <view class="itemJieFooter" a:if="{{type==1 || type==6}}">
+        <view class="name" a:if="{{type==6}}">
+          申请人：张三
+        </view>
+        <view a:else>
+          
+        </view>
+          <view>
+            <view class="itemJieBtn" data-item="{{item}}" onTap="saoma">
             扫码入库
+          </view>
           </view>
         </view>
       </view>
     </view>
+  </view>
     <view class="lastChild">
       
     </view>
-  </view>
 </view>
 </view>
 <!--<view class="noPage"><image mode="scaleToFill" src="../../img/zanwu.png" class="zanwuImg"/><view class="zanwuTxt">

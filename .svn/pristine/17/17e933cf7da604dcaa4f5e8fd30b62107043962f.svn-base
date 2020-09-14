@@ -1,0 +1,53 @@
+<view class="page">
+  <image class="avator" src="../../img/avator.png"/>
+  <view class="form">
+    <view class="form-item">
+      <view class="form-item-label">
+        姓名
+      </view>
+      <view class="form-item-text">
+        {{name}}
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="form-item-label">
+        性别
+      </view>
+      <view class="form-item-text">
+        男
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="form-item-label">
+        年龄
+      </view>
+      <view class="form-item-text">
+        28
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="form-item-label">
+        电话
+      </view>
+      <view class="form-item-text">
+        {{phone}}
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="form-item-label">
+        工号
+      </view>
+      <view class="form-item-text">
+        YBR254
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="form-item-label">
+        职务
+      </view>
+      <view class="form-item-text">
+        {{rolename}}
+      </view>
+    </view>
+  </view>
+</view>

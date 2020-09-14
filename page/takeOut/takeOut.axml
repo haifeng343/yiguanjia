@@ -31,7 +31,7 @@
           </view>
         </view>
       </picker>
-      <view class="takeItem">
+      <view class="takeItem" a:if="{{type == 5}}">
         <view class="label1">预计天数</view>
         <input placeholder="请输入预计天数" value="{{days}}" type="number" onInput="hasInput1" class="input1" placeholder-class="place"></input>
       </view>
@@ -142,10 +142,16 @@
             使用量
         </view>
         <view class="itemJieFoterRight">
-          <input type="digit" class="input2s" cursor-spacing="60"/>ml</view></view></view></view></view></view>
-  
+          <input type="digit" class="input2s" value="{{item.use}}" data-index="{{index}}" onInput="hasUse" cursor-spacing="60"/>ml
+        </view>
+        </view>
+      </view>
+    </view>
+  </view>
   <view class="lastChild"></view>
-  <image src="../../img/add.png" class="add" onTap="goSearch"/>
+</view>
+  
+  <image src="../../img/add.png" a:if="{{list}}" class="add" onTap="goSearch"/>
   <!-- 弹出窗 -->
   <view class="mask" a:if="{{showDialog}}">
   </view>
@@ -184,6 +190,6 @@
 <block a:if="{{!list}}">
   <view class="noPage">
     <image src="../../img/zanwu.png" class="zanwuImg"/>
-    <view class="zanwuBtn">去选择材料</view>
+    <view class="zanwuBtn" onTap="goSearch">去选择材料</view>
   </view>
 </block>

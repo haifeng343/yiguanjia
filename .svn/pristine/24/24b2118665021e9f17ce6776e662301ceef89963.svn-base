@@ -1,0 +1,185 @@
+<view class="page">
+  <view class="mask" a:if="{{showDialog}}" catchTap="closeDialog"></view>
+  <view class="container">
+    <view class="navTop">
+      <view class="navTitle">
+        <view class="navTitleLeft">
+          <view class="navTitleItem" a:for="{{nav}}" key="{{item.id}}" data-id="{{item.id}}" catchTap="setShowName">
+            <view class="{{item.id==showNavId?'navActive':''}}">{{item.name}}</view>
+            <image src="{{item.id==showNavId?'../../img/toggles.png':'../../img/toggle.png'}}" class="toggle"/>
+          </view>
+        </view>
+        <view class="navTitleRight" catchTap="toSearch">
+          <text class="shu">|</text>搜索
+        </view>
+      </view>
+    </view>
+    <view class="navContent navContent1" a:if="{{showNavId==1 && showDialog}}">
+      <view a:for="{{navList1}}" key="{{item.id}}" class="form">
+        <view class="navContentTitle">
+            {{item.name}}
+        </view>
+        <view class="navContentList">
+          <view a:for="{{item.list}}" key="{{item1.id}}" a:for-item="item1" class="navItem {{item1.select==true?'active':''}}" data-item1="{{item1}}" catchTap="setShow1">
+          {{item1.name}}
+          </view>
+        </view>
+      </view>
+      <view class="formFooter">
+        <view class="formBtn" catchTap="resetForm">
+          重置
+        </view>
+        <view class="formBtn" catchTap="submitForm">
+          确定
+        </view>
+      </view>
+    </view>
+    <view class="navContent" a:if="{{showNavId==2 && showDialog}}">
+      <view a:for="{{navList2}}" class="navItem {{showId2 == item.id?'active':''}}" data-item="{{item}}" catchTap="setShow2">
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+  <view class="heng">
+    <view class="time">
+      本月
+      <image src="../../img/right.png" class="right"/>
+    </view>
+    <view class="heng1">
+      <view class="tip">
+        使用量
+      </view>
+      <view class="tip"> 
+        剩余量
+      </view>
+    </view>
+  </view>
+  <view class="listJie">
+    <view class="itemJie">
+      <view class="itemJieTop">
+        <view class="start">
+          <image src="../../img/order.png" class="order"/>
+          <view class="itemJieCode">
+            YB202008260004
+          </view>
+        </view>
+        <view class="codeStatus">
+            使用中
+        </view>
+      </view>
+      <view class="itemJieContent">
+        <view class="itemJieContentTop">
+          <view class="itemJieImg">
+            <image src="../../img/product.png" class="img1" />
+          </view>
+          <view class="itemJieTxt">
+            <view class="itemJietxt1">
+                VSTM1 monoclonal antibody edVSTM1 monoclonal antibody edVSTM1 monoclonal antibody ed
+            </view>
+            <view>
+               货号 H00284415-M03
+            </view>
+            <view>
+                品牌 圣克鲁斯生物技术
+            </view>
+          </view>
+        </view>
+        <view class="itemJieStatus">
+          <view class="itemJieStatusItem">
+            <view class="itemJieStatusItemLabel">
+            样本类型
+            </view>
+            <view class="itemJieStatusItemTxt">
+              细胞
+            </view>
+          </view>
+          <view class="itemJieStatusItem">
+            <view class="itemJieStatusItemLabel">
+            组织类型
+            </view>
+            <view class="itemJieStatusItemTxt">
+              正常组织
+            </view>
+          </view>
+          <view class="itemJieStatusItem">
+            <view class="itemJieStatusItemLabel">
+            肿瘤类型
+            </view>
+            <view class="itemJieStatusItemTxt">
+              原发性肿瘤
+            </view>
+          </view>
+        </view>
+        <view class="itemJieText">
+          <view class="itemJieTextLabel">
+            溶冻次数
+          </view>
+          <view class="red">
+            12次
+          </view>
+        </view>
+        <view class="itemJieText">
+          <view class="itemJieTextLabel">
+             归还类型
+          </view>
+          <view class="itemJieTextTxt1">
+            是
+          </view>
+        </view>
+        <view class="itemJieText">
+          <view class="itemJieTextLabel">
+             出库时间
+          </view>
+          <view class="itemJieTextTxt1">
+            2020/08/12 12:23:56
+          </view>
+        </view>
+        <view class="itemJieText">
+          <view class="itemJieTextLabel">
+             预约归还时间
+          </view>
+          <view class="itemJieTextTxt1">
+            2020/08/12 12:23:56
+          </view>
+        </view>
+        <view class="itemJieFooter">
+          <view class="itemJieBtn">
+            归还
+          </view>
+          <view class="itemJieBtn yanchang">
+            延长申请
+          </view>
+          <view class="itemJieBtn">
+            归还
+          </view>
+          <!--<view class="itemJieBtn">
+            消耗申请</view> -->
+        </view>
+        <!--<view class="itemJieFooter"><view class="yihuan"><view class="yihuanItem"><view class="yihuanLabel">
+                  12ml</view><view class="yihuanTxt">
+                  出库容量</view></view><view class="yihuanItem"><view class="yihuanLabel">
+                  12ml</view><view class="yihuanTxt">
+                  归还容量</view></view><view class="yihuanItem"><view class="yihuanLabel">
+                  12ml</view><view class="yihuanTxt">
+                  损耗值</view></view><view class="yihuanItem"><view class="yihuanLabel">
+                  12ml</view><view class="yihuanTxt">
+                  实际使用量</view></view></view></view> -->
+        <view class="reagent">
+          <view class="haosheng">
+              100ML
+          </view>
+          <image src="../../img/reagent.png" class="reagentImg"/>
+          <view class="reagentContent">
+            <view class="reagentBottom"></view>
+            <view class="reagentChild">
+              46ml
+            </view>
+            <view class="reagentChild">
+              26ml
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -6,8 +6,8 @@ Page({
     rangeArr3: ['冻存盒转移', '材料转移'],
     val3: '',//选择第几个
     date: '',//预计归还时间
-    date1:'',//申请延期时间
-    days:'',//预计天数
+    date1: '',//申请延期时间
+    days: '',//预计天数
     dec: '',//原因
     showDialog: false,//是否展示弹出窗
     type: null,//1首次入库申请单 2转移申请单 3挂失申请表 4归还申请表 5延期申请表 6实验取出申请表 7过期销毁申请表  8消耗完申请
@@ -26,12 +26,12 @@ Page({
       this.setData({
         type: option.type
       })
-      if (option.type == 1) {
-        dd.setNavigationBar({ title: '首次入库申请' })
-      }
-      if (option.type == 2) {
-        dd.setNavigationBar({ title: '转移申请' })
-      }
+      // if (option.type == 1) {
+      //   dd.setNavigationBar({ title: '首次入库申请' })
+      // }
+      // if (option.type == 2) {
+      //   dd.setNavigationBar({ title: '转移申请' })
+      // }
       if (option.type == 3) {
         dd.setNavigationBar({ title: '挂失申请' })
       }
@@ -50,7 +50,7 @@ Page({
       if (option.type == 8) {
         dd.setNavigationBar({ title: '消耗完申请' })
       }
-
+ 
     }
   },
   // 获取弹窗
@@ -80,20 +80,37 @@ Page({
   //获取原因
   hasInput(e) {
     this.setData({
-      dec: e.detail.valle
+      dec: e.detail.value
     })
   },
   //预期天数
   hasInput1(e) {
     this.setData({
-      days: e.detail.valle
+      days: parseFloat(e.detail.value)
     })
   },
+  // 获取输入框 使用量
+  hasUse(e) {
+    let tempArr = this.data.list;
+    tempArr.forEach((item, index) => {
+      if (index == e.currentTarget.dataset.index) {
+        if (parseFloat(e.detail.value) >= item.bc_capacity) {
+          e.detail.value = item.bc_capacity;
+        }
+        item.ac_capacity = parseFloat(item.bc_capacity - parseFloat(e.detail.value));
+      }
+    });
+    this.setData({
+      list: tempArr
+    })
+  },
+  // 提交
   submit() {
     console.log(this.data.list)
     // 转移申请
     if (this.data.type == 2) {
       app.http('/api/apply/applytransfer', {
+        apply_reason: this.data.dec,
         product_type_id: this.data.productList[0].id,
         product_type: this.data.productList[0].name,
         remarks: '',
@@ -105,8 +122,12 @@ Page({
         }
       }).then(res => {
         if (res.data.success) {
-          dd.showToust({
-            title: res.data.message
+          dd.showToast({
+            type: 'success', 
+            content: res.data.message
+          })
+          dd.navigateTo({
+            url:'/page/mine/mine'
           })
         }
       })
@@ -114,6 +135,7 @@ Page({
     // 挂失申请
     if (this.data.type == 3) {
       app.http('/api/apply/applyloss', {
+        apply_reason: this.data.dec,
         product_type_id: this.data.productList[0].id,
         product_type: this.data.productList[0].name,
         remarks: '',
@@ -122,15 +144,26 @@ Page({
         }
       }).then(res => {
         if (res.data.success) {
-          dd.showToust({
-            title: res.data.message
+          dd.showToast({
+            type: 'success', 
+            content: res.data.message
           })
         }
       })
-    }
+    } 
     // 归还申请
     if (this.data.type == 4) {
+      let tempArr = this.data.list;
+      tempArr.forEach(item => {
+        if (item.use > item.bc_capacity) {
+          dd.showToast({
+            content:'使用量不得大于当前容量'
+          })
+          return false;
+        }
+      })
       app.http('/api/apply/applyback', {
+        apply_reason: this.data.dec,
         product_type_id: this.data.productList[0].id,
         product_type: this.data.productList[0].name,
         remarks: '',
@@ -139,8 +172,9 @@ Page({
         }
       }).then(res => {
         if (res.data.success) {
-          dd.showToust({
-            title: res.data.message
+          dd.showToast({
+            type: 'success', 
+            content: res.data.message
           })
         }
       })
@@ -150,18 +184,19 @@ Page({
       app.http('/api/apply/applydelay', {
         apply_reason: this.data.dec,
         returnday: this.data.date,
-        days:this.data.days,
-        delaydays:this.data.date1,        
+        days: this.data.days,
+        delaydays: this.data.date1,
         product_type_id: this.data.productList[0].id,
         product_type: this.data.productList[0].name,
         remarks: '',
-        instorage: {
+        outstorage: {
           sample: this.data.list
         }
       }).then(res => {
         if (res.data.success) {
-          dd.showToust({
-            title: res.data.message
+          dd.showToast({
+            type: 'success',
+            content: res.data.message
           })
         }
       })
@@ -180,8 +215,9 @@ Page({
         }
       }).then(res => {
         if (res.data.success) {
-          dd.showToust({
-            title: res.data.message
+          dd.showToast({
+            type: 'success',
+             content: res.data.message
           })
         }
       })
@@ -189,6 +225,7 @@ Page({
     // 过期销毁
     if (this.data.type == 7) {
       app.http('/api/apply/applyexpire', {
+        apply_reason: this.data.dec,
         product_type_id: this.data.productList[0].id,
         product_type: this.data.productList[0].name,
         remarks: '',
@@ -197,15 +234,17 @@ Page({
         }
       }).then(res => {
         if (res.data.success) {
-          dd.showToust({
-            title: res.data.message
+          dd.showToast({
+            type: 'success',
+             content: res.data.message
           })
         }
       })
     }
     // 消耗完申请
     if (this.data.type == 8) {
-      app.http('/api/apply/applyexpire', {
+      app.http('/api/apply/applydepleted', {
+        apply_reason: this.data.dec,
         product_type_id: this.data.productList[0].id,
         product_type: this.data.productList[0].name,
         remarks: '',
@@ -214,8 +253,9 @@ Page({
         }
       }).then(res => {
         if (res.data.success) {
-          dd.showToust({
-            title: res.data.message
+          dd.showToast({
+            type: 'success', 
+            content: res.data.message
           })
         }
       })

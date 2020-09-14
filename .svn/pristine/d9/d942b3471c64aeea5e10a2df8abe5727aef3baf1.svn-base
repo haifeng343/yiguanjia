@@ -1,0 +1,213 @@
+<view class="page">
+  <!-- 头部信息 -->
+  <view class="aTop">
+    <view class="aContent">
+      <view class="aName">
+      张三提交的归还申请
+      </view>
+      <!--<view class="aStatus">
+      待审核</view> -->
+      <!--<view class="aStatus red">
+      审核未通过</view> -->
+      <view class="aStatus green">
+      审核通过
+      </view>
+    </view>
+    <!--<image src="../../img/fail.png" class="fail"/> -->
+    <image src="../../img/success.png" class="fail"/>
+    <view class="aContent">
+      <view class="aItem">
+        <view class="aLabel">
+        审批编号：
+        </view>
+        <view class="aText">
+        52456847848574
+        </view>
+      </view>
+      <view class="aItem">
+        <view class="aLabel">
+        使用量：
+        </view>
+        <view class="aText">
+        10ml
+        </view>
+      </view>
+      <view class="aItem">
+        <view class="aLabel">
+        申请时间：
+        </view>
+        <view class="aText">
+        2020-10-1
+        </view>
+      </view>
+      <view class="aItem">
+        <view class="aLabel">
+        申请原因：
+        </view>
+        <view class="aText">
+       原因原因原因原因原因原因原因原因原因原因原因原因原因原因原因原因原因原因原因原因原因
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 材料信息 -->
+  <view class="aTitle">
+    <view>
+    材料信息
+    </view>
+    <!--<view>
+    收起<image src="../../img/top.png" class="up"/></view> -->
+    <view>
+    展开
+      <image src="../../img/up.png" class="up"/>
+    </view>
+  </view>
+  <!-- 产品列表 -->
+  <view class="list">
+    <view class="itemJie">
+      <view class="itemJieTop">
+        <view class="start">
+          <image src="../../img/order.png" class="order"></image>
+          <view class="itemJieCode">YB202008260004</view>
+        </view>
+      </view>
+      <view class="itemJieContent">
+        <view class="itemJieContentTop">
+          <view class="itemJieImg">
+            <image src="../../img/product.png" class="img1"></image></view>
+          <view class="itemJieTxt">
+            <view class="itemJietxt1">VSTM1 monoclonal antibody edVSTM1 monoclonal antibody edVSTM1 monoclonal antibody ed</view>
+            <view class="wrap">货号: H00284415H00284415H00284415H00284415-M03</view>
+            <view class="wrap">品牌: 圣克鲁斯生物技术圣克鲁斯生物技术圣克鲁斯生物技术</view></view></view>
+        <view class="itemJieTent">
+          <view class="itemJieTentItem">
+            <view class="itemJieTentItemLabel">样本类型:</view>
+            <view class="itemJieTentItemTxt">细胞</view></view>
+          <view class="itemJieTentItem">
+            <view class="itemJieTentItemLabel">组织类型:</view>
+            <view class="itemJieTentItemTxt">细胞</view></view>
+          <view class="itemJieTentItem">
+            <view class="itemJieTentItemLabel">肿瘤类型:</view>
+            <view class="itemJieTentItemTxt">细胞</view></view>
+          <view class="itemJieTentItem">
+            <view class="itemJieTentItemLabel">溶冻次数:</view>
+            <view class="itemJieTentItemTxt red">15次</view></view>
+          <view class="itemJieTentItem itemJieTentItem1">
+            <view class="itemJieTentItemLabel">转移前冻存盒位置:</view>
+            <view class="itemJieTentItemTxt goto">3L冰箱A11大层3小层2</view>
+          </view>
+          <view class="itemJieTentItem">
+            <view class="itemJieTentItemLabel">转移前材料位置:</view>
+            <view class="itemJieTentItemTxt goto">A1</view></view>
+          <view class="itemJieTentItem" a:if="{{type !== 5}}">
+            <view class="itemJieTentItemLabel">归还类型:</view>
+            <view class="itemJieTentItem">
+              <view class="itemJieTentItemLabel">规格:</view>
+              <view class="itemJieTentItemTxt">20ml</view></view>
+            <view class="itemJieTentItemTxt">归还</view></view>
+          <view class="itemJieTentItem" a:if="{{type !== 6}}">
+            <view class="itemJieTentItemLabel">出库时间:</view>
+            <view class="itemJieTentItemTxt">2010-10-12</view></view>
+          <view class="itemJieTentItem" a:if="{{type !== 6}}">
+            <view class="itemJieTentItemLabel">预计归还时间:</view>
+            <view class="itemJieTentItemTxt">2010-10-12</view></view>
+        </view>
+      </view>
+    </view>
+    <view class="itemJie">
+      <view class="itemJieTop">
+        <view class="start">
+          <image src="../../img/order.png" class="order"></image>
+          <view class="itemJieCode">YB202008260004</view>
+        </view>
+        <view class="codeNumber">200ug/ml</view>
+      </view>
+      <view class="itemJieContent">
+        <view class="itemJieContentTop">
+          <view class="itemJieImg">
+            <image src="../../img/product.png" class="img1"></image></view>
+          <view class="itemJieTxt">
+            <view class="itemJietxt1">VSTM1 monoclonal antibody edVSTM1 monoclonal antibody edVSTM1 monoclonal antibody ed</view>
+            <view class="wrap">货号: H00284415H00284415H00284415H00284415-M03</view>
+            <view class="wrap">品牌: 圣克鲁斯生物技术圣克鲁斯生物技术圣克鲁斯生物技术</view></view></view>
+        <view class="itemJieTent">
+          <view class="itemJieTentItem">
+            <view class="itemJieTentItemLabel">样本类型:</view>
+            <view class="itemJieTentItemTxt">细胞</view></view>
+          <view class="itemJieTentItem">
+            <view class="itemJieTentItemLabel">组织类型:</view>
+            <view class="itemJieTentItemTxt">细胞</view></view>
+          <view class="itemJieTentItem">
+            <view class="itemJieTentItemLabel">肿瘤类型:</view>
+            <view class="itemJieTentItemTxt">细胞</view></view>
+          <view class="itemJieTentItem">
+            <view class="itemJieTentItemLabel">溶冻次数:</view>
+            <view class="itemJieTentItemTxt red">15次</view></view>
+          <view class="itemJieTentItem" a:if="{{type !== 5}}">
+            <view class="itemJieTentItemLabel">归还类型:</view>
+            <view class="itemJieTentItemTxt">归还</view></view>
+          <view class="itemJieTentItem">
+            <view class="itemJieTentItemLabel">容量:</view>
+            <view class="itemJieTentItemTxt">20ml</view></view>
+          <view class="itemJieTentItem" a:if="{{type !== 6}}">
+            <view class="itemJieTentItemLabel">出库时间:</view>
+            <view class="itemJieTentItemTxt">2010-10-12</view></view>
+          <view class="itemJieTentItem" a:if="{{type !== 6}}">
+            <view class="itemJieTentItemLabel">预计归还时间:</view>
+            <view class="itemJieTentItemTxt">2010-10-12</view></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 审核 -->
+  <view class="shenhe bgWhite">
+    <view class="sItem">
+      <view class="sName">
+      张三
+      </view>
+      <view class="sContent">
+        <view class="sStatus">
+          发起转移申请
+        </view>
+        <view class="sTime">
+          2020/08/06  12:12:12
+        </view>
+      </view>
+      <image src="../../img/go.png" class="go"/>
+      <view class="shu shu1">
+      </view>
+    </view>
+    <view class="sItem">
+      <view class="sName">
+      博文
+      </view>
+      <view class="sContent">
+        <view class="sStatus">
+          仓管审批
+        </view>
+        <view class="sTime">
+          2020/08/06  12:12:12
+        </view>
+      </view>
+      <image src="../../img/go.png" class="go"/>
+      <view class="shu shu1">
+      </view>
+    </view>
+    <view class="sItem">
+      <view class="sName">
+        <image src="../../img/doo.png" class="doo"/>
+      </view>
+      <view class="sContent">
+        <view class="sStatus">
+          抄送
+        </view>
+        <view class="sTime">
+          李瑜、小雷
+        </view>
+      </view>
+      <image src="../../img/go.png" class="go"/>
+      <view class="shu">
+      </view>
+    </view>
+  </view>
+</view>

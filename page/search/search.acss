@@ -275,4 +275,19 @@ checkbox {
 .list{
   margin-top: 108rpx;
 }
+
+.itemJieTent{
+  padding-bottom: 0;
+}
+.itemJieFooter{
+  margin-top: 20rpx; 
+}
+.name{
+font-size: 28rpx;
+color: #6C6C6C;
+}
+.itemJieFooter{
+  display: flex;
+  justify-content: space-between;
+}
 @import '../takeOut/takeOut.acss';

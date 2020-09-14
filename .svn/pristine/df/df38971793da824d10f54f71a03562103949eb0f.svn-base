@@ -1,0 +1,199 @@
+.page {
+  width: 100%;
+  height: 100vh;
+}
+
+.aTop {
+  display: flex;
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: #fff!important;
+  position: relative;
+}
+
+.fail {
+  width: 146rpx;
+  height: 146rpx;
+  position: absolute;
+  right: 75rpx;
+  top: 45rpx;
+}
+
+.aContent {
+  width: 690rpx;
+  margin: 0 auto;
+  height: auto;
+  font-size: 24rpx;
+  color: #5D5D5D;
+}
+
+.aName {
+  margin-top: 28rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #3C3C3C;
+}
+
+.aStatus {
+  margin-top: 15rpx;
+  font-size: 24rpx;
+  color: #D3D0D0;
+  border-bottom: 1rpx solid #EAEAEA;
+  padding-bottom: 28rpx;
+}
+
+.aContent:last-child {
+  display: flex;
+  flex-direction: column;
+  line-height: 42rpx;
+  padding: 29rpx 0;
+}
+
+.geduan {
+  width: 100%;
+  height: 20rpx;
+  background: #f4f6fa;
+}
+
+.list {
+  width: 100%;
+  max-height: 1200rpx!important;
+  overflow-y: scroll!important;
+  margin-bottom: 20rpx!important;
+  background: #fff;
+}
+
+.itemJie {
+  width: 690!important;
+  margin-bottom: 0!important;
+  border-bottom: 1rpx solid #EAEAEA!important;
+}
+
+.itemJie:last-child {
+  border: none!important;
+}
+
+.off {
+  width: 20rpx;
+  height: 12rpx;
+}
+
+.aItem {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+}
+
+.aLabel {
+  width: 120rpx;
+}
+
+.aText {
+  color: #3C3C3C;
+  display: flex;
+  flex: 1;
+}
+
+.shenhe {
+  width: 100%;
+  height: auto;
+  display: flex;
+  background: rgb(255, 255, 255);
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 40rpx 30rpx;
+}
+
+.sItem {
+  width: 100%;
+  height: 168rpx;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.sName {
+  width: 88rpx;
+  height: 88rpx;
+  background: #323961;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #FFFFFF;
+  margin-right: 25rpx;
+}
+
+.sContent {
+  height: 88rpx;
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.sStatus {
+  font-size: 32rpx;
+  color: #3C3C3C;
+}
+
+.sTime {
+  font-size: 24rpx;
+  color: #D3D0D0;
+}
+
+.go {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: 60rpx;
+  left: 60rpx;
+}
+
+.shu {
+  width: 3rpx;
+  height: 80rpx;
+  background: #EAEAEA;
+  position: absolute;
+  left: 44rpx;
+  top: 88rpx;
+}
+
+.shu1 {
+  background: #323961;
+}
+
+.shenhe .sItem:last-child .shu {
+  display: none;
+}
+
+.aTitle {
+  width: 100%;
+  height: 94rpx;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  align-items: center;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #3C3C3C;
+}
+
+.up {
+  width: 18rpx;
+  height: 12rpx;
+  margin-left: 13rpx
+}
+
+.doo {
+  width: 34rpx;
+  height: 30rpx;
+}
+
+@import '../takeOut/takeOut.acss';

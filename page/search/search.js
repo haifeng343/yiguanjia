@@ -222,8 +222,18 @@ Page({
         state: option.state
       })
     }
+    console.log(option.type)
     if (option.type == 1) {
       dd.setNavigationBar({ title: '待入库列表' })
+    }
+    if (option.type == 2) {
+      dd.setNavigationBar({ title: '样本列表' })
+    }
+    if (option.type == 3) {
+      dd.setNavigationBar({ title: '样本列表' })
+    }
+    if (option.type == 6) {
+      dd.setNavigationBar({ title: '样本列表' })
     }
     this.getData(1);
   },
@@ -380,7 +390,11 @@ Page({
   allSelect() {
     let tempArr = this.data.pageData;
     tempArr.forEach(item => {
-      item.select = !item.select
+      if (!this.data.select1) {
+        item.select = true;
+      } else {
+        item.select = false;
+      }
     })
     this.setData({
       pageData: tempArr,
@@ -417,6 +431,9 @@ Page({
         sample_type_id: item.typeid,
         sample_type: item.type,
         sample_no: item.no,
+        bc_frozenbox: item.latticeid,
+        bc_sample: item.address,
+        bc_capacity: item.size
       })
     })
     let prevPage = pages[pages.length - 2];

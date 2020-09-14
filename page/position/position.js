@@ -60,7 +60,6 @@ Page({
     this.getRoomList();
   },
   onLoad(option) {
-    console.log(option);
     if (option) {
       this.setData({
         option: option
@@ -84,7 +83,18 @@ Page({
         });
       });
     });
-
+    let arr1 = this.data.heziList;
+        tempArr3.forEach((item,index) => {
+          item.stateid = null;
+          if (arr1.length) {
+            arr1.forEach(item1 => {
+              if (index+1 == item1.address) {
+                console.log(item)
+                item.stateid = item1.stateid;//1已满   != 1仓位保留
+              }
+            })
+          }
+        })
     this.setData({
       items: tempArr3
     })
@@ -161,8 +171,12 @@ Page({
   // 大层切换
   changeCeng(e) {
     this.setData({
-      showCengId: e.currentTarget.dataset.id
+      showCengId: e.currentTarget.dataset.id,
+      showXiaoCengId:null,
+      showJiaziId:null,
+      showHeziId:null,
     })
+    this.onLoad();
     this.changeLeava(this.data.showCengId);
   },
   // 从大层获取小层
@@ -190,8 +204,11 @@ Page({
       if (res.data.success) {
         this.setData({
           jiazList: res.data.result,
-          showXiaoCengId: e.currentTarget.dataset.index
+          showXiaoCengId: e.currentTarget.dataset.index,
+          showJiaziId:null,
+          showHeziId:null,
         })
+        this.onLoad();
       }
     })
   },
@@ -202,37 +219,59 @@ Page({
       latticeid: item.id,
     }).then(res => {
       if (res.data.success) {
+        let tempArr3 = this.data.items;
+        let arr1 = res.data.result;
+        tempArr3.forEach((item,index) => {
+          item.stateid = null;
+          if (arr1.length) {
+            arr1.forEach(item1 => {
+              if (index+1 == item1.address) {
+                console.log(item)
+                item.stateid = item1.stateid;//1已满   != 1仓位保留
+              }
+            })
+          }
+        })
         this.setData({
           jiaziId: item.id,
           heziList: res.data.result,
-          showJiaziId: e.currentTarget.dataset.index
+          items:tempArr3,
+          showJiaziId: e.currentTarget.dataset.index,
+          showHeziId:null,
         })
+        this.onLoad();
       }
     })
   },
   // 入库
   ruku() {
-    app.http('/api/apply/applyfirst',{
-      apply_reason:'',
-      remarks:'',
-      product_type_id:1,
-      product_type:'样本',
-      instorage:{
-        sample:[
+    app.http('/api/apply/applyfirst', {
+      apply_reason: '',
+      remarks: '',
+      product_type_id: 1,
+      product_type: '样本',
+      instorage: {
+        sample: [
           {
-            sample_id:parseInt(this.data.option.sample_id),
-            sample_type_id:parseInt(this.data.option.sample_type_id),
-            sample_type:this.data.option.sample_type,
-            sample_no:this.data.option.sample_no,
-            ac_frozenbox:this.data.jiaziId,
-            ac_sample:this.data.showHeziId,
-            qrcode:this.data.option.code
+            sample_id: parseInt(this.data.option.sample_id),
+            sample_type_id: parseInt(this.data.option.sample_type_id),
+            sample_type: this.data.option.sample_type,
+            sample_no: this.data.option.sample_no,
+            ac_frozenbox: this.data.jiaziId,
+            ac_sample: this.data.showHeziId,
+            qrcode: this.data.option.code
           }
         ]
       }
-    }).then(res=>{
+    }).then(res => {
       if (res.data.success) {
-        
+        dd.showToast({
+          type:'success',
+          content:'提交成功'
+        })
+        dd.navigateTo({
+          url: '/page/mine/mine'
+        })
       }
     })
   },

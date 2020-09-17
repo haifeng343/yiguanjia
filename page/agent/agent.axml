@@ -5,38 +5,44 @@
     </view>
   </view>
   <view class="list">
-    <view class="bItem">
+    <view class="bItem" a:for="{{pageData}}" key="index">
       <view class="bTop">
         <view class="bName">
-          张三
+          {{item.apply_user}}
         </view>
         <view class="bCont">
           <view class="between">
             <view class="1">
-            挂失申请
+            {{item.apply_type}}
               <image mode="scaleToFill" src="../../img/gan.png" class="gan"/>
             </view>
             <view class="bTime">
-            2020/08/08
+            {{item.apply_date}}
             </view>
           </view>
           <view class="bContent">
             <view class="bLabel">
-              挂失原因:
+              申请原因:
             </view>
             <view class="bText">
-              原因原因原因原因原因原因原因原因原因原因原因原因原因原因原因原因原因原因原因原因
+              {{item.apply_reason}}
             </view>
           </view>
           <view class="bContent">
             <view class="bLabel">
               材料信息:
             </view>
-            <view class="bToggle">
+            <view class="bToggle" onTap="toggleNo">
               <view class="bToggleName">
               展开
               </view>
               <image mode="scaleToFill" src="../../img/off.png" class="toggle"/>
+            </view>
+            <view class="bToggle">
+              <view class="bToggleName">
+              收起
+              </view>
+              <image mode="scaleToFill" src="../../img/no.png" class="toggle"/>
             </view>
           </view>
         </view>
@@ -45,7 +51,7 @@
         <view class="itemJieTop">
           <view class="start">
             <image src="../../img/order.png" class="order"></image>
-            <view class="itemJieCode">YB202008260004</view>
+            <view class="itemJieCode">{{item.apply_no}}</view>
           </view>
         </view>
         <view class="itemJieContent">
@@ -54,8 +60,8 @@
               <image src="../../img/product.png" class="img1"></image></view>
             <view class="itemJieTxt">
               <view class="itemJietxt1">VSTM1 monoclonal antibody edVSTM1 monoclonal antibody edVSTM1 monoclonal antibody ed</view>
-              <view class="wrap">货号: H00284415H00284415H00284415H00284415-M03</view>
-              <view class="wrap">品牌: 圣克鲁斯生物技术圣克鲁斯生物技术圣克鲁斯生物技术</view></view></view>
+              <view class="nowrap">货号: H00284415H00284415H00284415H00284415-M03</view>
+              <view class="nowrap">品牌: 圣克鲁斯生物技术圣克鲁斯生物技术圣克鲁斯生物技术</view></view></view>
           <view class="itemJieTent">
             <view class="itemJieTentItem">
               <view class="itemJieTentItemLabel">样本类型:</view>

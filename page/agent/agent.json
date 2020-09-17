@@ -1,3 +1,5 @@
 {
-  "defaultTitle": "我的代办"
+  "defaultTitle": "我的代办",
+  "pullRefresh":true,
+  "allowsBounceVertical":false
 }

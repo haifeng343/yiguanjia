@@ -51,27 +51,8 @@
       </view>
     </view>
     <view class="list">
-      <!-- <view class="listTitle">冻存盒信息</view>
-      <view class="itemJie itemJie1" style="margin-bottom:0">
-        <image src="../../img/delete.png" class="delete"/>
-        <view class="itemJieTop borderNone">
-          <view class="start">
-            <image src="../../img/order.png" class="order order1"></image>
-            <view class="itemJieCode">YB202008260004</view></view>
-          <view class="codeNumber"></view></view>
-        <view class="itemJieTo borderNone">
-          <view class="start">
-            <view class="itemJieCode"> 转移前冻存盒位置：
-            </view>
-            <text class="goto">3L冰箱A11大层3小层2</text>
-          </view>
-          <view class="codeNumber"></view></view>
-        <view class="itemJieFoter itemJieFoter1 borderNone">
-          <view class="itemJieBtn itemJieBtn1">
-            选择位置
-          </view>
-        </view>
-      </view> -->
+      <!--<view class="listTitle">冻存盒信息</view><view class="itemJie itemJie1" style="margin-bottom:0"><image src="../../img/delete.png" class="delete"/><view class="itemJieTop borderNone"><view class="start"><image src="../../img/order.png" class="order order1"></image><view class="itemJieCode">YB202008260004</view></view><view class="codeNumber"></view></view><view class="itemJieTo borderNone"><view class="start"><view class="itemJieCode"> 转移前冻存盒位置：</view><text class="goto">3L冰箱A11大层3小层2</text></view><view class="codeNumber"></view></view><view class="itemJieFoter itemJieFoter1 borderNone"><view class="itemJieBtn itemJieBtn1">
+            选择位置</view></view></view> -->
     </view>
   </view>
   <view class="itemJieToggle">
@@ -86,72 +67,79 @@
     展开
       <image src="../../img/up.png" class="off"/>
     </view>
-  </view> 
+  </view>
   <view class="itemJie" a:for="{{list}}" key="index">
     <image src="../../img/delete.png" data-index="{{index}}" onTap="deleteItem" class="delete"/>
     <view class="itemJieTop">
       <view class="start">
         <image src="../../img/order.png" class="order"></image>
-        <view class="itemJieCode">YB202008260004</view></view>
+        <view class="itemJieCode">{{item.no}}</view>
+        <image mode="scaleToFill" src="../../img/gan.png" a:if="{{item.returntype==2}}" class="gan" onTap="openDialog"/>
+        </view>
     </view>
     <view class="itemJieContent">
       <view class="itemJieContentTop">
         <view class="itemJieImg">
           <image src="../../img/product.png" class="img1"></image></view>
         <view class="itemJieTxt">
-          <view class="itemJietxt1">VSTM1 monoclonal antibody edVSTM1 monoclonal antibody edVSTM1 monoclonal antibody ed</view>
-          <view>货号: H00284415-M03</view>
-          <view>品牌: 圣克鲁斯生物技术</view></view></view>
+          <view class="itemJietxt1">{{item.name}}</view>
+          <!--<view>货号: H00284415-M03</view><view>品牌: 圣克鲁斯生物技术</view> -->
+          <view>
+              样本类型:{{item.type}}
+          </view>
+          <view>
+              组织类型:{{item.tissuestype}}
+          </view>
+        </view>
+      </view>
       <view class="itemJieTent">
         <view class="itemJieTentItem">
-          <view class="itemJieTentItemLabel">样本类型:</view>
-          <view class="itemJieTentItemTxt">细胞</view></view>
-        <view class="itemJieTentItem">
-          <view class="itemJieTentItemLabel">组织类型:</view>
-          <view class="itemJieTentItemTxt">细胞</view></view>
+          <view class="itemJieTentItemLabel">种属:</view>
+          <view class="itemJieTentItemTxt">{{item.grass}}</view></view>
         <view class="itemJieTentItem">
           <view class="itemJieTentItemLabel">肿瘤类型:</view>
-          <view class="itemJieTentItemTxt">细胞</view></view>
+          <view class="itemJieTentItemTxt">{{item.diseasetype}}</view></view>
         <view class="itemJieTentItem">
-          <view class="itemJieTentItemLabel">溶冻次数:</view>
-          <view class="itemJieTentItemTxt red">15次</view></view>
-        <view class="itemJieTentItem itemJieTentItem1">
-          <view class="itemJieTentItemLabel">转移前冻存盒位置:</view>
-          <view class="itemJieTentItemTxt goto">3L冰箱A11大层3小层2</view>
-        </view>
+          <view class="itemJieTentItemLabel">融冻次数:</view>
+          <view class="itemJieTentItemTxt red">{{item.thawcount}}次</view></view>
         <view class="itemJieTentItem">
-          <view class="itemJieTentItemLabel">转移前材料位置:</view>
-          <view class="itemJieTentItemTxt goto">A1</view></view>
-        <view class="itemJieTentItem" a:if="{{type !== 5}}">
+          <view class="itemJieTentItemLabel">总容量:</view>
+          <view class="itemJieTentItemTxt">{{item.size}}ml</view></view>
+        <view class="itemJieTentItem">
+          <view class="itemJieTentItemLabel">损耗量:</view>
+          <view class="itemJieTentItemTxt">{{item.losssize}}ml</view></view>
+        <view class="itemJieTentItem">
+          <view class="itemJieTentItemLabel">剩余容量:</view>
+          <view class="itemJieTentItemTxt">{{item.surplussize}}ml</view></view>
+        <view class="itemJieTentItem">
           <view class="itemJieTentItemLabel">归还类型:</view>
-          <view class="itemJieTentItemTxt">归还</view></view>
-        <view class="itemJieTentItem">
-          <view class="itemJieTentItemLabel">规格:</view>
-          <view class="itemJieTentItemTxt">20ml</view></view>
-        <view class="itemJieTentItem">
-          <view class="itemJieTentItemLabel">容量:</view>
-          <view class="itemJieTentItemTxt">20ml</view></view>
-        <view class="itemJieTentItem" a:if="{{type !== 6}}">
-          <view class="itemJieTentItemLabel">出库时间:</view>
-          <view class="itemJieTentItemTxt">2010-10-12</view></view>
-        <view class="itemJieTentItem" a:if="{{type !== 6}}">
+          <view class="itemJieTentItemTxt">{{item.returntype==1?'约定归还':'不归还'}}</view></view>
+        <view class="itemJieTentItem itemJieTentItem1" a:if="{{item.returntype!==2 && item.returnday}}">
           <view class="itemJieTentItemLabel">预计归还时间:</view>
-          <view class="itemJieTentItemTxt">2010-10-12</view></view></view>
-      <view class="itemJieFoter" a:if="{{type==4}}">
-        <view class="">
+          <view class="itemJieTentItemTxt">{{item.returnday}}</view>
+        </view>
+        <view class="itemJieTentItem itemJieTentItem1" a:if="{{item.state_id==9 ||item.state_id==11}}">
+          <view class="itemJieTentItemLabel">冻存时间:</view>
+          <view class="itemJieTentItemTxt">{{item.storagetime}}</view>
+        </view>
+        <view class="itemJieTentItem itemJieTentItem1" a:if="{{item.state_id==8 || item.state_id==9 || item.state_id==11}}">
+          <view class="itemJieTentItemLabel">保存期限:</view>
+          <view class="itemJieTentItemTxt">{{item.shelf_life}}</view>
+        </view>
+        <view class="itemJieFoter" a:if="{{type==4}}">
+          <view class="">
             使用量
-        </view>
-        <view class="itemJieFoterRight">
-          <input type="digit" class="input2s" value="{{item.use}}" data-index="{{index}}" onInput="hasUse" cursor-spacing="60"/>ml
-        </view>
+          </view>
+          <view class="itemJieFoterRight">
+            <input type="digit" class="input2s" value="{{item.use}}" data-index="{{index}}" onInput="hasUse" cursor-spacing="60"/>ml
+          </view>
         </view>
       </view>
     </view>
   </view>
   <view class="lastChild"></view>
-</view>
-  
-  <image src="../../img/add.png" a:if="{{list}}" class="add" onTap="goSearch"/>
+  </view>
+  <image src="../../img/add.png" a:if="{{list.length}}" class="add" onTap="goSearch"/>
   <!-- 弹出窗 -->
   <view class="mask" a:if="{{showDialog}}">
   </view>
@@ -173,21 +161,36 @@
       </view>
     </view>
   </view>
+  <!-- 知道了 -->
+  <view class="knowDialog" a:if="{{showDialog1}}">
+    <view class="knowTitle">
+        提示
+    </view>
+    <view class="knowContent">
+      借用时未选择归还，故未保留仓位，审核通过由仓管重新入库
+    </view>
+    <!--<view class="knowContent">
+      有材料借用时未选择归还，故未保留仓位，审核通过由仓管重新入库</view> -->
+    <view class="knowFooter" onTap="openDialog">
+    知道了
+    </view>
+  </view>
   <!-- 底部 -->
   <view class="takeFooter">
     <view class="takeTxt1">
         合计材料:
       <text class="takeNumber">{{list.length?list.length:0}}</text>条
     </view>
-    <view class="takeBtn" a:if="{{!list}}">
-      提交</view>
+    <view class="takeBtn" a:if="{{!list.length}}">
+      提交
+    </view>
     <view class="takeBtn takeBtn1" a:else onTap="submit">
       提交
     </view>
   </view>
 </block>
 <!-- 没有数据 -->
-<block a:if="{{!list}}">
+<block a:if="{{!list.length}}">
   <view class="noPage">
     <image src="../../img/zanwu.png" class="zanwuImg"/>
     <view class="zanwuBtn" onTap="goSearch">去选择材料</view>

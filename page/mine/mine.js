@@ -3,32 +3,32 @@ Page({
   data: {
     shenList: [
       {
-        id: 1,
+        id: 6,
         name: '申请实验',
         img: '../../img/a1.png'
       },
       {
-        id: 2,
+        id: 3,
         name: '挂失申请',
         img: '../../img/a2.png'
       },
       {
-        id: 3,
+        id: 4,
         name: '归还申请',
         img: '../../img/a3.png'
       },
       {
-        id: 4,
+        id: 5,
         name: '延期申请',
         img: '../../img/a4.png'
       },
       {
-        id: 5,
+        id: 8,
         name: '消耗完申请',
         img: '../../img/a5.png'
       },
       {
-        id: 6,
+        id: 2,
         name: '转移申请',
         img: '../../img/a6.png'
       },
@@ -85,10 +85,34 @@ Page({
     },
     ],
     isIphoneX: app.globalData.isIphoneX,
+    navList: [//代办nav
+      {
+        id:1,
+        name:'我发起的'
+      },
+      {
+        id:2,
+        name:'待处理的'
+      },
+      {
+        id:3,
+        name:'已处理的'
+      },
+      {
+        id:4,
+        name:'抄送我的'
+      },
+    ],
   },
   onLoad() {
 
   },
+  goNav(e){
+    dd.navigateTo({
+      url:'/page/agent/agent?type='+e.currentTarget.dataset.id
+    })
+  },
+  // 扫码
   saoma() {
     dd.scan({
       type: 'qr',
@@ -110,7 +134,13 @@ Page({
   // 跳转到申请页面
   goToForm(e) {
     dd.navigateTo({
-      url: '/page/takeOut/takeOut?type='+e.currentTarget.dataset.id
+      url: '/page/takeOut/takeOut?type=' + e.currentTarget.dataset.id
+    })
+  },
+  // 跳转到我的列表
+  myList() {
+    dd.navigateTo({
+      url: '/page/search/search?type=0'
     })
   },
 

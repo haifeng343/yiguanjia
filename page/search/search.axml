@@ -14,18 +14,24 @@
       </view>
     </view>
   </view>
-  <view class="list">
+  <!-- 我的列表 -->
+  <view class="list" a:if="{{type==0 && list.length}}">
     <view class="itemJie" a:for="{{pageData}}" key="index">
       <view class="itemJieTop">
-        <view class="start" data-id="{{item.id}}" onTap="setChange">
-          <view class="checkbox {{item.select==true?'checkboxed':''}}" a:if="{{type !== 1}}">
-          </view>
-          <image src="../../img/order.png" class="order"></image> 
+        <view class="start">
+          <image src="../../img/order.png" class="order"></image>
           <view class="itemJieCode">{{item.no}}</view></view>
-          <view class="red" a:if="{{type==1}}">首次入库</view>
-          <view class="red" a:if="{{type==2}}">材料转移</view>
-          <view class="red" a:if="{{type==6}}">实验取出</view>
-          <view class="red" a:if="{{type==7}}">清理过期</view>
+        <view class="txtcor" a:if="{{item.state_id==1}}">申请中</view>
+        <view class="green" a:if="{{item.state_id==2}}">已通过</view>
+        <view class="red" a:if="{{item.state_id==3}}">挂失申请中</view>
+        <view class="red" a:if="{{item.state_id==4}}">已挂失</view>
+        <view class="red" a:if="{{item.state_id==5}}">归还申请中</view>
+        <view class="green" a:if="{{item.state_id==6}}">已归还</view>
+        <view class="red" a:if="{{item.state_id==7}}">延期申请中</view>
+        <view class="txtcor" a:if="{{item.state_id==8}}">过期销毁中</view>
+        <view class="red" a:if="{{item.state_id==9}}">已销毁</view>
+        <view class="red" a:if="{{item.state_id==10}}">消耗完申请</view>
+        <view class="red" a:if="{{item.state_id==11}}">未通过</view>
       </view>
       <view class="itemJieContent">
         <view class="itemJieContentTop">
@@ -33,17 +39,19 @@
             <image src="../../img/product.png" class="img1"></image></view>
           <view class="itemJieTxt">
             <view class="itemJietxt1">{{item.name}}</view>
-            <!-- <view>货号: H00284415-M03</view>
-            <view>品牌: 圣克鲁斯生物技术</view> -->
+            <!--<view>货号: H00284415-M03</view><view>品牌: 圣克鲁斯生物技术</view> -->
+            <view>
+              样本类型:{{item.type}}
+            </view>
+            <view>
+              组织类型:{{item.tissuestype}}
+            </view>
           </view>
         </view>
         <view class="itemJieTent">
           <view class="itemJieTentItem">
-            <view class="itemJieTentItemLabel">样本类型:</view>
-            <view class="itemJieTentItemTxt">{{item.type}}</view></view>
-          <view class="itemJieTentItem">
-            <view class="itemJieTentItemLabel">组织类型:</view>
-            <view class="itemJieTentItemTxt">{{item.tissuestype}}</view></view>
+            <view class="itemJieTentItemLabel">种属:</view>
+            <view class="itemJieTentItemTxt">{{item.grass}}</view></view>
           <view class="itemJieTentItem">
             <view class="itemJieTentItemLabel">肿瘤类型:</view>
             <view class="itemJieTentItemTxt">{{item.diseasetype}}</view></view>
@@ -51,65 +59,139 @@
             <view class="itemJieTentItemLabel">融冻次数:</view>
             <view class="itemJieTentItemTxt red">{{item.thawcount}}次</view></view>
           <view class="itemJieTentItem">
-            <view class="itemJieTentItemLabel">容量:</view>
+            <view class="itemJieTentItemLabel">总容量:</view>
             <view class="itemJieTentItemTxt">{{item.size}}ml</view></view>
-          <!-- <view class="itemJieTentItem">
-            <view class="itemJieTentItemLabel">规格:</view>
-            <view class="itemJieTentItemTxt">{{item.size}}ml</view></view> -->
-
-
-
-
-
-          <!-- <view class="itemJieTentItem itemJieTentItem1">
-            <view class="itemJieTentItemLabel">转移前冻存盒位置:</view>
-            <view class="itemJieTentItemTxt goto">3L冰箱A11大层3小层2</view>
-          </view>
           <view class="itemJieTentItem">
-            <view class="itemJieTentItemLabel">转移前材料位置:</view>
-            <view class="itemJieTentItemTxt goto">A1</view></view>
-          <view class="itemJieTentItem" a:if="{{type !== 5}}">
+            <view class="itemJieTentItemLabel">损耗量:</view>
+            <view class="itemJieTentItemTxt">{{item.losssize}}ml</view></view>
+          <view class="itemJieTentItem">
+            <view class="itemJieTentItemLabel">剩余容量:</view>
+            <view class="itemJieTentItemTxt">{{item.surplussize}}ml</view></view>
+          <view class="itemJieTentItem">
             <view class="itemJieTentItemLabel">归还类型:</view>
-            <view class="itemJieTentItemTxt">归还</view></view>
-          <view class="itemJieTentItem" a:if="{{type !== 6}}">
-            <view class="itemJieTentItemLabel">出库时间:</view>
-            <view class="itemJieTentItemTxt">2010-10-12</view></view>
-          <view class="itemJieTentItem" a:if="{{type !== 6}}">
+            <view class="itemJieTentItemTxt">{{item.returntype==1?'约定归还':'不归还'}}</view></view>
+          <view class="itemJieTentItem itemJieTentItem1" a:if="{{item.returntype!==2}}">
             <view class="itemJieTentItemLabel">预计归还时间:</view>
-            <view class="itemJieTentItemTxt">2010-10-12</view></view></view> -->
-        <view class="itemJieFoter" a:if="{{type==4}}">
-          <view class="">
-            使用量
+            <view class="itemJieTentItemTxt">{{item.returnday}}</view>
           </view>
-          <view class="itemJieFoterRight">
-            <input type="digit" class="input2s" cursor-spacing="60"/>ml</view>
-        </view>
-
-        <view class="itemJieFooter" a:if="{{type==1 || type==6}}">
-        <view class="name" a:if="{{type==6}}">
-          申请人：张三
-        </view>
-        <view a:else>
-          
-        </view>
-          <view>
-            <view class="itemJieBtn" data-item="{{item}}" onTap="saoma">
-            扫码入库
+          <view class="itemJieTentItem itemJieTentItem1" a:if="{{item.state_id==9 ||item.state_id==11}}">
+            <view class="itemJieTentItemLabel">冻存时间:</view>
+            <view class="itemJieTentItemTxt">{{item.storagetime}}</view>
           </view>
+          <view class="itemJieTentItem itemJieTentItem1" a:if="{{item.state_id==8 || item.state_id==9 || item.state_id==11}}">
+            <view class="itemJieTentItemLabel">保存期限:</view>
+            <view class="itemJieTentItemTxt">{{item.shelf_life}}</view>
+          </view>
+          <view class="itemJieFoot" a:if="{{item.state_id==2}}">
+            <view class="shenheRen">
+              <view class="shenheRenName">
+                审核人：张三
+              </view>
+              <view class="shenheTime">
+                2020/08/08
+              </view></view>
+            <view class="itemJieBtns" a:if="{{item.state_id==2}}">
+              <view class="itemJieBtn" data-item="{{item}}" data-type="{{4}}" onTap="onBtn">
+                归还
+              </view>
+              <view class="itemJieBtn" data-item="{{item}}" data-type="{{3}}" onTap="onBtn">
+                挂失
+              </view>
+              <view class="itemJieBtn" data-item="{{item}}" data-type="{{5}}" onTap="onBtn">
+                延长申请
+              </view>
+              <view class="itemJieBtn" data-item="{{item}}" data-type="{{8}}" onTap="onBtn">
+                消耗申请
+              </view>
+            </view>
+          </view>
+          <view class="itemJieFoot" a:if="{{item.state_id==5 || item.state_id==6}}">
+            <view class="beizhu">
+              备注：
+              <view class="nowrap">
+                原因原因原因原因原因原因原因原因原因备注：原因原因原因原因原因原因原因原因原因
+              </view>
+            </view>
+          </view>
+          <view class="itemJieFoot" a:if="{{item.state_id==7}}">
+            <view class="beizhu">
+              延期原因：
+              <view class="nowrap">
+                原因原因原因原因原因原因原因原因原因备注：原因原因原因原因原因原因原因原因原因
+              </view>
+            </view>
           </view>
         </view>
       </view>
     </view>
   </view>
-    <view class="lastChild">
-      
-    </view>
 </view>
+<!-- 搜索列表 -->
+<view class="list" a:if="{{type!==0 && list.length}}">
+  <view class="itemJie" a:for="{{pageData}}" key="index">
+    <view class="itemJieTop">
+      <view class="start" data-id="{{item.id}}" onTap="setChange">
+        <view class="checkbox {{item.select==true?'checkboxed':''}}" a:if="{{type !== 1}}">
+        </view>
+        <image src="../../img/order.png" class="order"></image>
+        <view class="itemJieCode">{{item.no}}</view></view>
+      <view class="red" a:if="{{type==1}}">首次入库</view>
+      <view class="red" a:if="{{type==2}}">材料转移</view>
+      <view class="red" a:if="{{type==6}}">实验取出</view>
+      <view class="red" a:if="{{type==7}}">清理过期</view>
+    </view>
+    <view class="itemJieContent">
+      <view class="itemJieContentTop">
+        <view class="itemJieImg">
+          <image src="../../img/product.png" class="img1"></image></view>
+        <view class="itemJieTxt">
+          <view class="itemJietxt1">{{item.name}}</view>
+          <!--<view>货号: H00284415-M03</view><view>品牌: 圣克鲁斯生物技术</view> -->
+        </view>
+      </view>
+      <view class="itemJieTent itemJieTent1">
+        <view class="itemJieTentItem">
+          <view class="itemJieTentItemLabel">样本类型:</view>
+          <view class="itemJieTentItemTxt">{{item.type}}</view></view>
+        <view class="itemJieTentItem">
+          <view class="itemJieTentItemLabel">组织类型:</view>
+          <view class="itemJieTentItemTxt">{{item.tissuestype}}</view></view>
+        <view class="itemJieTentItem">
+          <view class="itemJieTentItemLabel">肿瘤类型:</view>
+          <view class="itemJieTentItemTxt">{{item.diseasetype}}</view></view>
+        <view class="itemJieTentItem">
+          <view class="itemJieTentItemLabel">融冻次数:</view>
+          <view class="itemJieTentItemTxt red">{{item.thawcount}}次</view></view>
+        <view class="itemJieTentItem">
+          <view class="itemJieTentItemLabel">容量:</view>
+          <view class="itemJieTentItemTxt">{{item.size}}ml</view></view>
+        <!--<view class="itemJieTentItem"><view class="itemJieTentItemLabel">规格:</view><view class="itemJieTentItemTxt">{{item.size}}ml</view></view> -->
+        <!--<view class="itemJieTentItem itemJieTentItem1"><view class="itemJieTentItemLabel">转移前冻存盒位置:</view><view class="itemJieTentItemTxt goto">3L冰箱A11大层3小层2</view></view><view class="itemJieTentItem"><view class="itemJieTentItemLabel">转移前材料位置:</view><view class="itemJieTentItemTxt goto">A1</view></view><view class="itemJieTentItem" a:if="{{type !== 5}}"><view class="itemJieTentItemLabel">归还类型:</view><view class="itemJieTentItemTxt">归还</view></view><view class="itemJieTentItem" a:if="{{type !== 6}}"><view class="itemJieTentItemLabel">出库时间:</view><view class="itemJieTentItemTxt">2010-10-12</view></view><view class="itemJieTentItem" a:if="{{type !== 6}}"><view class="itemJieTentItemLabel">预计归还时间:</view><view class="itemJieTentItemTxt">2010-10-12</view></view></view> -->
+        <view class="itemJieFoter" a:if="{{type==4}}">
+          <view class="">
+            使用量
+          </view>
+          <view class="itemJieFoterRight">
+            <input type="digit" class="input2s" cursor-spacing="60"/>ml</view></view>
+        <view class="itemJieFooter" a:if="{{type==1 || type==6}}">
+          <view class="name" a:if="{{type==6}}">
+          申请人：张三
+          </view>
+          <view a:else></view>
+          <view>
+            <view class="itemJieBtn" data-item="{{item}}" onTap="saoma">
+            扫码入库
+            </view></view></view>
+      </view>
+    </view>
+  </view>
+  <view class="lastChild">
+  </view>
 </view>
 <!--<view class="noPage"><image mode="scaleToFill" src="../../img/zanwu.png" class="zanwuImg"/><view class="zanwuTxt">
       ~~没有找到相关数据~~</view></view> -->
 <!-- 底部 -->
-<view class="takeFooter">
+<view class="takeFooter" a:if="{{type!==0}}">
   <view class="checkBox" catchTap="allSelect">
     <view class="checkbox {{select1==true?'checkboxed':''}}">
     </view>
@@ -123,7 +205,8 @@
       <text class="takeNumber">{{count}}</text>条
     </view>
     <view class="takeBtn" a:if="{{!count}}">
-      提交</view>
+      提交
+    </view>
     <view class="takeBtn takeBtn1" a:else catchTap="submit">
       提交
     </view>
@@ -141,7 +224,7 @@
     </view>
   </view>
   <view class="shaiList {{toggle1==false?'h150':''}}">
-    <view a:for="{{list}}" key="{{item.id}}" class="navItem {{item.select==true?'active':''}}" data-id="{{item.id}}" catchTap="setShow">
+    <view a:for="{{list}}" key="{{item.id}}" class="navItem {{showNav==item.id?'active':''}}" data-name="{{item.name}}" data-id="{{item.id}}" catchTap="setShow">
           {{item.name}}
     </view>
   </view>
@@ -190,10 +273,10 @@
   <view class="lastChild">
   </view>
   <view class="shaiFooter">
-    <view class="shaiBtn">
+    <view class="shaiBtn" onTap="clearAll">
         重置
     </view>
-    <view class="shaiBtn">
+    <view class="shaiBtn" onTap="sureSend">
         确定
     </view>
   </view>

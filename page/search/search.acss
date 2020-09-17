@@ -265,29 +265,77 @@ checkbox {
   background-position: center;
   border: none!important;
 }
-
-.ml12 {
-  margin-left: 12rpx;
+.checkbox {
+  margin-right: 12rpx;
 }
-.order{
-  margin-left: 16rpx;
-}
-.list{
+.list {
   margin-top: 108rpx;
 }
 
-.itemJieTent{
-  padding-bottom: 0;
+.itemJieFooter {
+  margin-top: 20rpx;
 }
-.itemJieFooter{
-  margin-top: 20rpx; 
+
+.name {
+  font-size: 28rpx;
+  color: #6C6C6C;
 }
-.name{
-font-size: 28rpx;
-color: #6C6C6C;
-}
-.itemJieFooter{
+
+.itemJieFooter {
   display: flex;
   justify-content: space-between;
 }
+
+.itemJieFoot {
+  width: 100%;
+  height: auto;
+  padding-top: 20rpx;
+  margin-top: 10rpx;
+  max-height: 173rpx;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  border-top: 1rpx solid #EAEAEA;
+}
+
+.shenheRen {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20rpx;
+}
+
+.shenheRenName {
+  color: #3C3C3C;
+}
+
+.shenheTime {
+  color: #D3D0D0;
+}
+
+.itemJieBtns {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+}
+
+.itemJieBtn:nth-child(4n+2) {
+  color: #fff;
+  background: #F55C64;
+}
+
+.beizhu {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top: 30rpx;
+  color: #3C3C3C;
+  padding-bottom: 20rpx;
+}
+
 @import '../takeOut/takeOut.acss';

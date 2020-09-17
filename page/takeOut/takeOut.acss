@@ -20,6 +20,12 @@
   border-bottom: 1px solid #EAEAEA;
 }
 
+.gan {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+}
+
 .start {
   display: flex;
   align-items: center;
@@ -166,4 +172,10 @@
   font-size: 28rpx;
   font-weight: bold;
   color: #3C3C3C;
+}
+.itemJieTent{
+  padding-bottom: 0;
+}
+.itemJieFoter{
+  margin-top: 20rpx;
 }

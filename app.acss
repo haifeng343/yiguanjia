@@ -246,6 +246,9 @@ button {
   align-items: center;
   flex-direction: row;
 }
+.itemJieTentItem:last-child{
+  margin-bottom: 20rpx;
+}
 
 .itemJieTentItemLabel {
   color: #5D5D5D;
@@ -343,6 +346,10 @@ button {
   color: #1DC084!important;
 }
 
+.txtcor {
+  color: #3C3C3C!important;
+}
+
 .between {
   display: flex;
   justify-content: space-between;
@@ -387,8 +394,8 @@ button {
 } */
 
 .itemJieBtn {
-  width: 158rpx;
-  height: 54rpx;
+  width: 138rpx;
+  height: 50rpx;
   background: #FFFFFF;
   border: 1rpx solid #F55C64;
   border-radius: 8rpx;
@@ -771,7 +778,8 @@ button {
   height: 48rpx;
   margin-bottom: 7rpx;
 }
-.saoma{
+
+.saoma {
   width: 132rpx;
   height: 132rpx;
   border-radius: 100%;
@@ -785,13 +793,16 @@ button {
   align-items: center;
   z-index: 2;
 }
-.saomaPng{
+
+.saomaPng {
   width: 96rpx;
   height: 96rpx;
 }
+
 .black {
   color: #282828;
 }
-.bt68{
+
+.bt68 {
   bottom: 68rpx!important;
 }

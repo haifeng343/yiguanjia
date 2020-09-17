@@ -10,8 +10,9 @@ Page({
     days: '',//预计天数
     dec: '',//原因
     showDialog: false,//是否展示弹出窗
+    showDialog1:false,//不归还弹窗
     type: null,//1首次入库申请单 2转移申请单 3挂失申请表 4归还申请表 5延期申请表 6实验取出申请表 7过期销毁申请表  8消耗完申请
-    list: null,//数据
+    list: [],//数据
     unfold: false,//展开收起
     deleteId: null,//删除的Id
     productList: [//产品类型
@@ -22,6 +23,31 @@ Page({
     ]
   },
   onLoad(option) {
+    console.log(option)
+    if(option.item){
+      let arr = [];
+      let item1 = JSON.parse(decodeURIComponent(option.item));
+      arr.push(item1);
+      let arr1 = [];
+      arr.filter(item=>{
+        return item
+      }).map(item=>{
+        arr1.push({
+          sample_id: item.id,
+          sample_type_id: item.typeid,
+          sample_type: item.type,
+          sample_no: item.no,
+          bc_frozenbox: item.latticeid,
+          bc_sample: item.address,
+          bc_capacity: item.size,
+          qrcode:item.qrcode
+        })
+      })
+      this.setData({
+        list:arr1
+      })
+    console.log(this.data.list)
+    }
     if (option.type) {
       this.setData({
         type: option.type
@@ -46,12 +72,19 @@ Page({
       }
       if (option.type == 7) {
         dd.setNavigationBar({ title: '过期销毁申请' })
+        
       }
       if (option.type == 8) {
         dd.setNavigationBar({ title: '消耗完申请' })
       }
  
     }
+  },
+  // 打开弹窗
+  openDialog(){
+    this.setData({
+      showDialog1:!this.data.showDialog1
+    })
   },
   // 获取弹窗
   change1(e) {
@@ -107,6 +140,22 @@ Page({
   // 提交
   submit() {
     console.log(this.data.list)
+    let tempArr = this.data.list;
+    let arr1 = [];
+      tempArr.filter(item=>{
+        return item
+      }).map(item=>{
+        arr1.push({
+          sample_id: item.id,
+          sample_type_id: item.typeid,
+          sample_type: item.type,
+          sample_no: item.no,
+          bc_frozenbox: item.latticeid,
+          bc_sample: item.address,
+          bc_capacity: item.size,
+          qrcode:item.qrcode
+        })
+      })
     // 转移申请
     if (this.data.type == 2) {
       app.http('/api/apply/applytransfer', {
@@ -115,10 +164,10 @@ Page({
         product_type: this.data.productList[0].name,
         remarks: '',
         instorage: {
-          sample: this.data.list
+          sample: arr1
         },
         outstorage: {
-          sample: this.data.list
+          sample: arr1
         }
       }).then(res => {
         if (res.data.success) {
@@ -140,7 +189,7 @@ Page({
         product_type: this.data.productList[0].name,
         remarks: '',
         outstorage: {
-          sample: this.data.list
+          sample: arr1
         }
       }).then(res => {
         if (res.data.success) {
@@ -168,7 +217,7 @@ Page({
         product_type: this.data.productList[0].name,
         remarks: '',
         instorage: {
-          sample: this.data.list
+          sample: arr1
         }
       }).then(res => {
         if (res.data.success) {
@@ -190,7 +239,7 @@ Page({
         product_type: this.data.productList[0].name,
         remarks: '',
         outstorage: {
-          sample: this.data.list
+          sample: arr1
         }
       }).then(res => {
         if (res.data.success) {
@@ -211,7 +260,7 @@ Page({
         product_type: this.data.productList[0].name,
         remarks: '',
         outstorage: {
-          sample: this.data.list
+          sample: arr1
         }
       }).then(res => {
         if (res.data.success) {
@@ -230,7 +279,7 @@ Page({
         product_type: this.data.productList[0].name,
         remarks: '',
         outstorage: {
-          sample: this.data.list
+          sample: arr1
         }
       }).then(res => {
         if (res.data.success) {
@@ -249,7 +298,7 @@ Page({
         product_type: this.data.productList[0].name,
         remarks: '',
         outstorage: {
-          sample: this.data.list
+          sample: arr1
         }
       }).then(res => {
         if (res.data.success) {

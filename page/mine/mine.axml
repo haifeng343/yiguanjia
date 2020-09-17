@@ -22,36 +22,12 @@
   </view>
   <!-- 审核 -->
   <view class="shenhe">
-    <view class="shenheItem">
+    <view class="shenheItem" a:for="{{navList}}" key="item.id" data-id="{{item.id}}" onTap="goNav">
       <view class="shenheText">
         12
       </view>
       <view class="shenheLabel">
-        我发起的
-      </view>
-    </view>
-    <view class="shenheItem">
-      <view class="shenheText">
-        12
-      </view>
-      <view class="shenheLabel">
-        待处理的
-      </view>
-    </view>
-    <view class="shenheItem">
-      <view class="shenheText">
-        12
-      </view>
-      <view class="shenheLabel">
-        已处理的
-      </view>
-    </view>
-    <view class="shenheItem">
-      <view class="shenheText">
-        12
-      </view>
-      <view class="shenheLabel">
-        抄送我的
+        {{item.name}}
       </view>
     </view>
   </view>
@@ -83,7 +59,7 @@
     </view>
   </view>
   <!-- 我的列表 -->
-  <view class="navTitle">
+  <view class="navTitle" onTap="myList">
     <view class="nTitle">
       我的列表
     </view>

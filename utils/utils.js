@@ -19,6 +19,17 @@ function getTargetDate(days) {
     }
     return new_time; //输出格式：2013-01-02
 }
+//计算日期
+function addDate(date, days) {
+  var d = new Date(date);
+  d.setDate(d.getDate() + days);
+  var m = d.getMonth() + 1;
+  if (m < 9) {
+    m = "0" + m
+  }
+  return d.getFullYear() + '-' + m + '-' + d.getDate();
+}
 module.exports = {
-    getTargetDate: getTargetDate
+    getTargetDate: getTargetDate,
+    addDate:addDate
 }

@@ -237,13 +237,7 @@ Page({
     if (option.type == 1) {
       dd.setNavigationBar({ title: '待入库列表' })
     }
-    if (option.type == 2) {
-      dd.setNavigationBar({ title: '样本列表' })
-    }
-    if (option.type == 3) {
-      dd.setNavigationBar({ title: '样本列表' })
-    }
-    if (option.type == 6) {
+    if (option.type !== 0 || option.type !== 1) {
       dd.setNavigationBar({ title: '样本列表' })
     }
   },

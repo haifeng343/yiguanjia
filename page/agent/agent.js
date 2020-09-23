@@ -20,6 +20,7 @@ Page({
         name: '抄送我的'
       }],
     showDialog: false,//弹出窗是否显示
+    showDialog1: false,//弹出窗是否显示
     pageData: [],
     pageIndex: 1,
     totalPageCount: 0,
@@ -32,7 +33,11 @@ Page({
       this.getData(1);
     }
   },
-
+  gan() {
+    this.setData({
+      showDialog1: !this.data.showDialog1
+    })
+  },
   // 获取我的代办列表
   getData(pageIndex) {
     app.http('/api/apply/getapplyprocessed', {

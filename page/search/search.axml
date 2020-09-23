@@ -167,118 +167,113 @@
           <view class="itemJieTentItemTxt">{{item.size}}ml</view></view>
         <!--<view class="itemJieTentItem"><view class="itemJieTentItemLabel">规格:</view><view class="itemJieTentItemTxt">{{item.size}}ml</view></view> -->
         <!--<view class="itemJieTentItem itemJieTentItem1"><view class="itemJieTentItemLabel">转移前冻存盒位置:</view><view class="itemJieTentItemTxt goto">3L冰箱A11大层3小层2</view></view><view class="itemJieTentItem"><view class="itemJieTentItemLabel">转移前材料位置:</view><view class="itemJieTentItemTxt goto">A1</view></view><view class="itemJieTentItem" a:if="{{type !== 5}}"><view class="itemJieTentItemLabel">归还类型:</view><view class="itemJieTentItemTxt">归还</view></view><view class="itemJieTentItem" a:if="{{type !== 6}}"><view class="itemJieTentItemLabel">出库时间:</view><view class="itemJieTentItemTxt">2010-10-12</view></view><view class="itemJieTentItem" a:if="{{type !== 6}}"><view class="itemJieTentItemLabel">预计归还时间:</view><view class="itemJieTentItemTxt">2010-10-12</view></view></view> -->
-        <view class="itemJieFoter" a:if="{{type==4}}">
-          <view class="">
-            使用量
-          </view>
-          <view class="itemJieFoterRight">
-            <input type="digit" class="input2s" cursor-spacing="60"/>ml</view></view>
-        <view class="itemJieFooter" a:if="{{type==1 || type==6}}">
+        <view class="itemJieFooter" a:if="{{type ==1 || type ==6}}">
           <view class="name" a:if="{{type==6}}">
           申请人：张三
           </view>
           <view a:else></view>
-          <view>
+          <view a:if="{{type==1}}">
             <view class="itemJieBtn" data-item="{{item}}" onTap="saoma">
             扫码入库
-            </view></view></view>
+            </view>
+          </view>
+        </view>
       </view>
     </view>
   </view>
   <view class="lastChild">
   </view>
-</view>
-<!--<view class="noPage"><image mode="scaleToFill" src="../../img/zanwu.png" class="zanwuImg"/><view class="zanwuTxt">
+  <!--<view class="noPage"><image mode="scaleToFill" src="../../img/zanwu.png" class="zanwuImg"/><view class="zanwuTxt">
       ~~没有找到相关数据~~</view></view> -->
-<!-- 底部 -->
-<view class="takeFooter" a:if="{{type!==0}}">
-  <view class="checkBox" catchTap="allSelect">
-    <view class="checkbox {{select1==true?'checkboxed':''}}">
-    </view>
-    <view class="ml12">
+  <!-- 底部 -->
+  <view class="takeFooter" a:if="{{type!==0}}">
+    <view class="checkBox" catchTap="allSelect">
+      <view class="checkbox {{select1==true?'checkboxed':''}}">
+      </view>
+      <view class="ml12">
         全选
+      </view>
     </view>
-  </view>
-  <view class="takeFooterRight">
-    <view class="takeTxt1">
+    <view class="takeFooterRight">
+      <view class="takeTxt1">
         合计:
-      <text class="takeNumber">{{count}}</text>条
-    </view>
-    <view class="takeBtn" a:if="{{!count}}">
+        <text class="takeNumber">{{count}}</text>条
+      </view>
+      <view class="takeBtn" a:if="{{!count}}">
       提交
-    </view>
-    <view class="takeBtn takeBtn1" a:else catchTap="submit">
+      </view>
+      <view class="takeBtn takeBtn1" a:else catchTap="submit">
       提交
+      </view>
     </view>
   </view>
-</view>
-<!-- 筛选 -->
-<view class="mask" a:if="{{showDialog}}" catchTap="hideDialog"></view>
-<view class="shai" a:if="{{showDialog}}">
-  <view class="shaiTitle">
-    <view>
+  <!-- 筛选 -->
+  <view class="mask" a:if="{{showDialog}}" catchTap="hideDialog"></view>
+  <view class="shai" a:if="{{showDialog}}">
+    <view class="shaiTitle">
+      <view>
         样本类型
+      </view>
+      <view class="bbt" catchTap="toggle">
+        <image mode="scaleToFill" src="{{toggle1==true?'../../img/top.png':'../../img/up.png'}}" class="off"/>
+      </view>
     </view>
-    <view class="bbt" catchTap="toggle">
-      <image mode="scaleToFill" src="{{toggle1==true?'../../img/top.png':'../../img/up.png'}}" class="off"/>
-    </view>
-  </view>
-  <view class="shaiList {{toggle1==false?'h150':''}}">
-    <view a:for="{{list}}" key="{{item.id}}" class="navItem {{showNav==item.id?'active':''}}" data-name="{{item.name}}" data-id="{{item.id}}" catchTap="setShow">
+    <view class="shaiList {{toggle1==false?'h150':''}}">
+      <view a:for="{{list}}" key="{{item.id}}" class="navItem {{showNav==item.id?'active':''}}" data-name="{{item.name}}" data-id="{{item.id}}" catchTap="setShow">
           {{item.name}}
+      </view>
     </view>
-  </view>
-  <!-- 材料状态 -->
-  <view class="shaiTitle">
-    <view>
+    <!-- 材料状态 -->
+    <view class="shaiTitle">
+      <view>
         材料状态
+      </view>
     </view>
-  </view>
-  <view class="shaiList">
-    <view class="navItem {{showStatus==item.id?'active':''}}" a:for="{{statusList}}" key="{{item.id}}" data-id="{{item.id}}" catchTap="setStatus">
+    <view class="shaiList">
+      <view class="navItem {{showStatus==item.id?'active':''}}" a:for="{{statusList}}" key="{{item.id}}" data-id="{{item.id}}" catchTap="setStatus">
          {{item.name}}
+      </view>
     </view>
-  </view>
-  <!-- 时间间隔 -->
-  <view class="shaiTitle">
-    <view>
+    <!-- 时间间隔 -->
+    <view class="shaiTitle">
+      <view>
         时间区间
+      </view>
     </view>
-  </view>
-  <view class="shaiList">
-    <view class="navItem {{showDay==item.id?'active':''}}" a:for="{{dayList}}" key="{{item.id}}" data-id="{{item.id}}" catchTap="setDay">
+    <view class="shaiList">
+      <view class="navItem {{showDay==item.id?'active':''}}" a:for="{{dayList}}" key="{{item.id}}" data-id="{{item.id}}" catchTap="setDay">
          {{item.name}}
+      </view>
     </view>
-  </view>
-  <!-- 时间catchTap -->
-  <view class="shijian">
-    <view class="timer">
-      <picker mode="date" value="{{val}}" range="{{rangeArr}}" onChange="change1">
-        <view>
-          <image mode="scaleToFill" src="../../img/rili.png" class="rili"/>{{date1}}</view>
-      </picker>
-    </view>
-    <view>
+    <!-- 时间catchTap -->
+    <view class="shijian">
+      <view class="timer">
+        <picker mode="date" value="{{val}}" range="{{rangeArr}}" onChange="change1">
+          <view>
+            <image mode="scaleToFill" src="../../img/rili.png" class="rili"/>{{date1}}</view>
+        </picker>
+      </view>
+      <view>
        至
+      </view>
+      <view class="timer">
+        <picker mode="date" value="{{val}}" range="{{rangeArr}}" onChange="change2">
+          <view>
+            <image mode="scaleToFill" src="../../img/rili.png" class="rili"/>{{date2}}</view>
+        </picker>
+      </view>
     </view>
-    <view class="timer">
-      <picker mode="date" value="{{val}}" range="{{rangeArr}}" onChange="change2">
-        <view>
-          <image mode="scaleToFill" src="../../img/rili.png" class="rili"/>{{date2}}</view>
-      </picker>
+    <view class="lastChild">
     </view>
-  </view>
-  <view class="lastChild">
-  </view>
-  <view class="lastChild">
-  </view>
-  <view class="shaiFooter">
-    <view class="shaiBtn" onTap="clearAll">
+    <view class="lastChild">
+    </view>
+    <view class="shaiFooter">
+      <view class="shaiBtn" onTap="clearAll">
         重置
-    </view>
-    <view class="shaiBtn" onTap="sureSend">
+      </view>
+      <view class="shaiBtn" onTap="sureSend">
         确定
+      </view>
     </view>
   </view>
-</view>
 </view>

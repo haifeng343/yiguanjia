@@ -6,9 +6,54 @@ App({
     // console.log('getSystemInfoSync', dd.getSystemInfoSync());
     // console.log('SDKVersion', dd.SDKVersion);
     // https://blog.csdn.net/weixin_30536513/article/details/102122187
+    let url = this.globalData.serverurl + "/api/dingapi/dinglogin";
     this.globalData.corpId = options.query.corpId;
+    dd.getAuthCode({
+      success: (res) => {
+        dd.httpRequest({
+          url: url,
+          method: 'POST',
+          data: JSON.stringify({
+            auth_code: res.authCode,
+            auth_corpid: this.globalData.corpId,
+          }),
+          headers: {
+            "Content-Type": "application/json"
+          },
+          success: function (res) {
+            dd.setStorage({
+              key: 'userInfo',
+              data: {
+                userid: res.data.result.userid,
+                account: res.data.result.account,
+                token: res.data.result.token,
+                phone: res.data.result.phone,
+                nickname: res.data.result.nickname,
+                dingid: res.data.result.dingid,
+                rolename: res.data.result.rolename,
+                unionid: res.data.result.unionid,
+                user: res.data.result
+              }
+            })
+          },
+          fail: function (res) {
+            dd.alert({ content: JSON.stringify(res) });
+          },
+          complete: function (res) {
+            dd.hideLoading();
+          }
+
+        });
+      },
+      fail: (err) => {
+        dd.alert({
+          content: JSON.stringify(err)
+        })
+      }
+    })
     this.globalData.serverurl = "https://api.mfetv.top";
     this.globalData.isIphoneX = dd.getSystemInfoSync().model == "iPhone10,3" ? true : false;
+
   },
   onShow() {
     // console.log('App Show');

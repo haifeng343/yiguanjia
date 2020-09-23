@@ -4,7 +4,7 @@
         {{item.name}}
     </view>
   </view>
-  <view class="list">
+  <view class="list" a:if="{{pageData.length}}">
     <view class="bItem" a:for="{{pageData}}" key="index">
       <view class="bTop">
         <view class="bName">
@@ -14,7 +14,7 @@
           <view class="between">
             <view class="1">
             {{item.apply_type}}
-              <image mode="scaleToFill" src="../../img/gan.png" class="gan"/>
+              <image mode="scaleToFill" src="../../img/gan.png" class="gan" onTap="gan"/>
             </view>
             <view class="bTime">
             {{item.apply_date}}
@@ -108,8 +108,12 @@
       </view>
     </view>
   </view>
-  <!--<view class="noPage"><image mode="scaleToFill" src="../../img/zanwu.png" class="zanwuImg"/><view class="zanwuTxt">
-      ~~您还没有待办的事情~~</view></view> -->
+  <view class="noPage" a:else>
+    <image mode="scaleToFill" src="../../img/zanwu.png" class="zanwuImg"/>
+    <view class="zanwuTxt">
+      ~~您还没有待办的事情~~
+    </view>
+  </view>
   <!-- 弹出窗 -->
   <view class="mask" a:if="{{showDialog}}">
   </view>
@@ -121,57 +125,19 @@
       <view class="ToustTxt">
       是否确认此操作？
       </view>
-      <!-- <view class="TouseContainer">
-        <view class="TouseItem">
-          <view class="TouseItemLebael">
-            编号
-          </view>
-          <view class="TouseItemText">
-             BAY3425
-          </view>
-        </view>
-        <view class="TouseItem">
-          <view class="TouseItemLebael">
-            名称
-          </view>
-          <view class="TouseItemText">
-             凯撒奖的斯卡迪就撒网额欧威我去哦披萨打死
-          </view>
-        </view>
-        <view class="TouseItem">
-          <view class="TouseItemLebael">
-            材料类型
-          </view>
-          <view class="TouseItemText">
-             细胞
-          </view>
-        </view>
-        <view class="TouseItem">
-          <view class="TouseItemLebael">
-            组织类型
-          </view>
-          <view class="TouseItemText">
-             正常组织
-          </view>
-        </view>
-        <view class="TouseItem">
-          <view class="TouseItemLebael">
-            容量
-          </view>
-          <view class="TouseItemText">
-             20ml
-          </view>
-        </view>
-        <view class="TouseItem">
-          <view class="TouseItemLebael">
-            申请人
-          </view>
-          <view class="TouseItemText">
-             张三
-          </view>
-        </view>
-
-      </view> -->
+      <!--<view class="TouseContainer"><view class="TouseItem"><view class="TouseItemLebael">
+            编号</view><view class="TouseItemText">
+             BAY3425</view></view><view class="TouseItem"><view class="TouseItemLebael">
+            名称</view><view class="TouseItemText">
+             凯撒奖的斯卡迪就撒网额欧威我去哦披萨打死</view></view><view class="TouseItem"><view class="TouseItemLebael">
+            材料类型</view><view class="TouseItemText">
+             细胞</view></view><view class="TouseItem"><view class="TouseItemLebael">
+            组织类型</view><view class="TouseItemText">
+             正常组织</view></view><view class="TouseItem"><view class="TouseItemLebael">
+            容量</view><view class="TouseItemText">
+             20ml</view></view><view class="TouseItem"><view class="TouseItemLebael">
+            申请人</view><view class="TouseItemText">
+             张三</view></view></view> -->
     </view>
     <view class="ToustFooter">
       <view class="ToustBtn">
@@ -183,7 +149,9 @@
     </view>
   </view>
   <!-- 知道了 -->
-  <view class="knowDialog" a:if="{{showDialog}}">
+  <view class="mask" a:if="{{showDialog1}}" catchtouchmove="true">
+  </view>
+  <view class="knowDialog" a:if="{{showDialog1}}">
     <view class="knowTitle">
         提示
     </view>
@@ -192,7 +160,7 @@
     </view>
     <!--<view class="knowContent">
       有材料借用时未选择归还，故未保留仓位，审核通过由仓管重新入库</view> -->
-    <view class="knowFooter">
+    <view class="knowFooter" onTap="gan">
     知道了
     </view>
   </view>

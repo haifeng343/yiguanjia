@@ -33,5 +33,10 @@
 }
 
 .form-item-text {
+  width: 80%;
+  text-align: right;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   color: #8C8C8C;
 }

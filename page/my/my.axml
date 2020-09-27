@@ -35,15 +35,7 @@
     </view>
     <view class="form-item">
       <view class="form-item-label">
-        工号
-      </view>
-      <view class="form-item-text">
-        YBR254
-      </view>
-    </view>
-    <view class="form-item">
-      <view class="form-item-label">
-        职务
+        权限
       </view>
       <view class="form-item-text">
         {{rolename}}

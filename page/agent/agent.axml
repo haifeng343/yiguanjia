@@ -4,8 +4,14 @@
         {{item.name}}
     </view>
   </view>
-  <view class="list" a:if="{{pageData.length}}">
-    <view class="bItem" a:for="{{pageData}}" key="index">
+    <view class="noPage" a:if="{{!pageData.length}}">
+    <image mode="scaleToFill" src="../../img/zanwu.png" class="zanwuImg"/>
+    <view class="zanwuTxt">
+      ~~您还没有待办的事情~~
+    </view>
+  </view>
+  <view class="list" a:else>
+    <view class="bItem" a:for="{{pageData}}" key="index"> 
       <view class="bTop">
         <view class="bName">
           {{item.apply_user}}
@@ -108,12 +114,7 @@
       </view>
     </view>
   </view>
-  <view class="noPage" a:else>
-    <image mode="scaleToFill" src="../../img/zanwu.png" class="zanwuImg"/>
-    <view class="zanwuTxt">
-      ~~您还没有待办的事情~~
-    </view>
-  </view>
+
   <!-- 弹出窗 -->
   <view class="mask" a:if="{{showDialog}}">
   </view>

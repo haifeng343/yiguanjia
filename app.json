@@ -1,14 +1,14 @@
 {
   "pages": [
-    "page/index/index",
+    "page/mine/mine",
     "page/my/my",
+    "page/index/index",
     "page/loanList/loanList",
     "page/search/search",
     "page/agent/agent",
     "page/takeOut/takeOut",
     "page/application/application",
-    "page/position/position",
-    "page/mine/mine",
+    "page/position/position", 
     "page/applyList/applyList"
   ],
   "window": {
